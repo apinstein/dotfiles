@@ -10,6 +10,7 @@ nnoremap <silent> <F7> :Tlist<CR>  " Tlist plugin toggle
 "set backspace=2   " allow backspacing over everything in insert mode
 set hlsearch
 highlight Search cterm=reverse ctermfg=lightyellow ctermbg=black
+highlight PmenuSel ctermbg=1                                                                                                                                                             
 " clear search highlight temporariliy, but do not disable hlsearch
 map <F12> :nohls<CR>
 " mappings for easy navigation of :grep results and compile errors
@@ -22,7 +23,8 @@ set expandtab
 set sw=4  " shift width 
 set ts=4  " tab stop
 set noerrorbells
-set magic " extend regexp with magic(do help magic)
+" set magic " extend regexp with magic(do help magic) -- I don't think I want this b/c it makes PHP preg and vim act differently and it's confusing
+set bs=indent,eol,start
 set smartindent   
 set autoindent    " always set autoindenting on
 set formatoptions=qroct
@@ -50,6 +52,7 @@ compiler php
 set tags+=~/dev/sandbox/showcase/tags
 set tags+=~/dev/sandbox/showcase-dpi-dev/tags
 set tags+=~/dev/sandbox/phocoa/docs/tags
+set tags+=~/dev/sandbox/showcaseng/showcaseng/tags
 
 " Function to close HTML tags
 nnoremap \hc :call InsertCloseTag()<CR>
@@ -113,15 +116,37 @@ function! InsertCloseTag()
 
 endfunction " InsertCloseTag()
 
-" Map ; to run PHP parser check
-noremap ; :!/opt/local/bin/php -l %<CR>
+" Map ; to run linter for file type
+function! DoLint()
+  if &filetype == 'javascript'
+    " find the next non-closing tag (in the appropriate direction), note where
+    " it is (in mark j) in case this function gets called again, then yank it
+    " and paste a copy at the original cursor position, and store the final
+    " cursor position (in mark i) for use next time round:
+    execute ":!jsl -process % | head -20"
+
+  elseif &filetype == 'xml'
+    execute ":!xmllint -format % | head -20"
+  elseif &filetype == 'php'
+    execute ":!/opt/local/bin/php -l % | head -20"
+  else
+    echohl ErrorMsg
+    echo 'No linter set up for filetype' &filetype
+    sleep
+    echohl None
+  endif
+
+endfunction " RepeatTag()
+noremap ; :call DoLint()<CR>
 " alternative
 map! =if if (<Right><CR>{<Up><Up>
 " PHPDocumenter docbloc
 map! =dbg /**<CR><CR><CR><CR><CR>/
 map! =dbv /**<CR>@var <CR>/<Up><ESC>A
-map! =dbf /**<CR> <CR><CR>@param <CR>@return<CR>@throws<CR>/<Up><Up><Up><Up><Up><ESC>A
+map! =dbf /**<CR><CR><CR>@param <CR>@return<CR>@throws<CR>/<Up><Up><Up><Up><Up><ESC>A
 map! =dbt /**#@+<CR><CR>/<CR>/**#@-*/<CR><ESC><Up>
+" phocoa validator autocomplete
+map! =kvv public function validate(&$value, &$edited, &$errors)<CR>{<CR>return true;<CR>}<ESC>3<Up>3ea
 
 " function to repeat HTML tags used previously in file (like ctl-n / ctl-p but for HTML tags)
 nnoremap \hp :call RepeatTag(0)<CR>
