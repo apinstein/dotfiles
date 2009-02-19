@@ -127,6 +127,8 @@ function! DoLint()
 
   elseif &filetype == 'xml'
     execute ":!xmllint -format % | head -20"
+  elseif &filetype == 'ruby'
+    execute ":!ruby -c % | head -20"
   elseif &filetype == 'php'
     execute ":!/opt/local/bin/php -l % | head -20"
   else
