@@ -38,7 +38,11 @@ set showcmd   " Show (partial) command in status line.
 set showmatch   " Show matching brackets.
 set autowrite    " Automatically save before commands like :next and :make
 set fileformats=unix,mac,dos " accepted file formats
+
+" syntax coloring
 syntax on
+" add flash syntax support, from http://www.abdulqabiz.com/blog/archives/flash_and_actionscript/vim_actionscript_and.php
+au BufNewFile,BufRead *.as set filetype=actionscript
 
 " php options - eventually put these in an autocmd group or whatever to make them local to PHP files
 set keywordprg=~/.vim/php_lookup " map shift-k to lookup commands on PHP web site

@@ -2,3 +2,8 @@
 	diff = auto
 	status = auto
 	branch = auto
+[user]
+	name = Alan Pinstein
+	email = apinstein@mac.com
+[core]
+	excludesfile = /Users/alanpinstein/.gitignore

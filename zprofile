@@ -1,6 +1,5 @@
 # another way, if you don't have pidof or need to know it's _your_ agent
 idfile=~/.agentid
-#if pidof ssh-agent > /dev/null
 if ps xu -U `whoami` | grep "ssh-agent$" &> /dev/null
 then
         test ! "$SSH_CLIENT" && test -r $idfile && eval `cat $idfile`
@@ -24,11 +23,17 @@ export EDITOR=vi
 # ftp
 export FTP_PASSIVE=1
 
-# munge path
-export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
-export MANPATH=/sw/share/man:/opt/local/share/man:/usr/local/man:/usr/share/man:$MANPATH
+# java
+export CLASSPATH=$CLASSPATH:/Applications/dieselpoint-search/lib/diesel-3.5.1.jar:/Applications/dieselpoint-search/lib/javax.servlet.jar
+
+# fixes bug where Terminal.app doesn't let you scroll back through the history.
+export TERM=screen
+
+# run local .zprofile
+source ~/.zprofile.local
 
 # auto-run screen, but only once
+# MUST be done after local .zprofile which usually include PATH munging.
 if ps -x | grep "SCREEN$" &> /dev/null
 then
     echo "Screen is already running."
@@ -36,9 +41,3 @@ else
     echo "Starting screen..."
     screen
 fi
-
-# java
-export CLASSPATH=$CLASSPATH:/Applications/dieselpoint-search/lib/diesel-3.5.1.jar:/Applications/dieselpoint-search/lib/javax.servlet.jar
-
-# fixes bug where Terminal.app doesn't let you scroll back through the history.
-export TERM=screen

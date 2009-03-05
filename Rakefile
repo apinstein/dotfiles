@@ -22,6 +22,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 require 'rake'
+require 'fileutils'
 
 task :default => :install
 
@@ -31,7 +32,16 @@ task :install do
   Dir['*'].each do |file|
     next if %w[Rakefile README LICENSE].include? file
     next if FileTest.symlink?(File.join(ENV['HOME'], ".#{file}"))
+
+    # handle .local versions; only copy if DNE
+    if file.match('\.local$')
+        if !File.exist?(File.join(ENV['HOME'], ".#{file}"))
+            FileUtils.copy(file, File.join(ENV['HOME'], ".#{file}"))
+        end
+        next
+    end
     
+    # handle normal dotfiles
     if File.exist?(File.join(ENV['HOME'], ".#{file}"))
       if replace_all
         replace_file(file)
