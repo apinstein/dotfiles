@@ -5,8 +5,14 @@ ssh -A user@host
 <from the server>
 git clone ssh://alanpinstein@showcasen.dnsalias.com/Users/alanpinstein/dev/dotfiles.git
 
+Then set up the remotes properly:
+git-config branch.master.remote origin
+git-config branch.master.merge master
+
+
 Then, cd into dotfiles and run rake.
 
 The "real" dotfiles on the machine are symlinks to the git repo, which allows easy editing of the "core" settings without getting confused.
 
 Dotfiles that allow "local machine" config are createed automatically, see .mydotfile.local. Typically the local dotfile is included at the END of the core dotfile to allow overriding of "core" settings.
+
