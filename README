@@ -1,0 +1,12 @@
+This project helps manage dotfiles across multiple machines, allowing you to share the common parts via git to keep them up-to-date while also having infrastructure for each machine to have its own local config that survives "git pull's" of the core dotfiles setup.
+
+To clone this repo:
+ssh -A user@host
+<from the server>
+git clone ssh://alanpinstein@showcasen.dnsalias.com/Users/alanpinstein/dotfiles
+
+Then, cd into dotfiles and run rake.
+
+The "real" dotfiles on the machine are symlinks to the git repo, which allows easy editing of the "core" settings without getting confused.
+
+Dotfiles that allow "local machine" config are createed automatically, see .mydotfile.local. Typically the local dotfile is included at the END of the core dotfile to allow overriding of "core" settings.
