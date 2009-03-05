@@ -3,7 +3,7 @@ This project helps manage dotfiles across multiple machines, allowing you to sha
 To clone this repo:
 ssh -A user@host
 <from the server>
-git clone ssh://alanpinstein@showcasen.dnsalias.com/Users/alanpinstein/dotfiles
+git clone ssh://alanpinstein@showcasen.dnsalias.com/Users/alanpinstein/dev/dotfiles.git
 
 Then, cd into dotfiles and run rake.
 
