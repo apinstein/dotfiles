@@ -8,6 +8,8 @@ RPROMPT=" $USERNAME@%M:%~"     # prompt for right side of screen
 # line editing
 bindkey -v
 
+export EDITOR=vim
+
 # propel dev stuff
 export PHP_COMMAND=/opt/local/bin/php
 alias php4='/usr/local/bin/php'
@@ -17,9 +19,6 @@ alias propel-gen12='/Users/Shared/src/propel-1.2/generator/bin/propel-gen'
 alias propel-gen13='/Users/Shared/src/propel-1.2/generator/bin/propel-gen'
 alias propel-gen='propel-gen12'
 alias pshell='phocoa shell'
-
-# fink settings
-#source /sw/bin/init.sh
 
 # aliases
 alias l='ls -alhG'
@@ -34,7 +33,6 @@ alias bigdirs='du -Sh ./ | grep -v "^-1" | grep "^[0-9]\\+M"'
 alias base64urldecode='tr "\-_" "+/" | base64 -d | more'
 alias dailysales='tar -x opt/showcase/log/dailysales.txt.log -O -zf `ls -1t /Volumes/Scratchy/backup/production/showcase/alans-showcase-backup.200*tgz | head -1` > ~/Documents/Business/ShowCase/Admin/daily-sales.tab'
 alias vi=vim
-alias vim=/opt/local/bin/vim
 alias sgrep="grep --exclude '*.svn*' $*"
 alias selenium='java -jar /usr/local/bin/selenium-server.jar'
 
@@ -50,8 +48,6 @@ export CVSROOT=/Users/Shared/Development/cvsroot
 alias cvsstat='cvs -n up -R |& grep -v "^[o]\?cvs update\|server: Updating"'
 alias cvsstatl='cvs -n up -l |& grep -v "^[o]\?cvs update\|server: Updating"'
 alias cvstunnel='ssh -R 2401:localhost:2401 root@pen.syskey.com'
-
-# java settings
 
 # php helpers
 alias xdebug-on='export XDEBUG_CONFIG="idekey="'
