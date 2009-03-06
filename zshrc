@@ -56,8 +56,8 @@ alias xdebug-off='unset XDEBUG_CONFIG'
 #login shortcuts
 alias sc-prod='ssh -A apinstein@showcasere.com'
 alias sc-staging='ssh -A apinstein@216.114.79.44'
+alias sc-www0='ssh -A apinstein@216.114.79.46'
 alias startatlanta='ssh -A apinstein@216.114.79.47'
-alias oldbox='ssh -A apinstein@open-development.com'
 alias imac='ssh -A alanpinstein@showcase.dnsalias.com'
 
 # ZSH setup
