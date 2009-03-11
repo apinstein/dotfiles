@@ -2,6 +2,7 @@ startup_message off
 vbell on
 hardstatus alwayslastline
 hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
+altscreen on
 screen -t db 0 psql -U postgres
 screen -t php 1
 screen -t smarty 2

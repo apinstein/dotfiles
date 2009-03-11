@@ -10,11 +10,9 @@ bindkey -v
 
 export EDITOR=vim
 
-alias propel-gen='propel-gen12'
-alias pshell='phocoa shell'
-
 # aliases
 alias l='ls -alhG'
+alias pshell='phocoa shell'
 alias godb='psql -U postgres showcase'
 alias gomb='cd ~/Documents/Business/Consulting/MediaBin/Mac\ Client'
 alias gocvs='cd ~/dev/sandbox'
@@ -48,9 +46,9 @@ alias xdebug-off='unset XDEBUG_CONFIG'
 
 #login shortcuts
 alias sc-prod='ssh -A apinstein@showcasere.com'
-alias sc-staging='ssh -A apinstein@216.114.79.44'
+alias sc-vm0='ssh -A apinstein@216.114.79.44'
+alias sc-www0='ssh -A apinstein@216.114.79.46'
 alias startatlanta='ssh -A apinstein@216.114.79.47'
-alias oldbox='ssh -A apinstein@open-development.com'
 alias imac='ssh -A alanpinstein@showcase.dnsalias.com'
 
 # ZSH setup
