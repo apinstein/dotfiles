@@ -10,13 +10,6 @@ bindkey -v
 
 export EDITOR=vim
 
-# propel dev stuff
-export PHP_COMMAND=/opt/local/bin/php
-alias php4='/usr/local/bin/php'
-alias php5=$PHP_COMMAND
-alias phocoa='/Users/alanpinstein/dev/sandbox/phocoa/phocoa/phing/phocoa'
-alias propel-gen12='/Users/Shared/src/propel-1.2/generator/bin/propel-gen'
-alias propel-gen13='/Users/Shared/src/propel-1.2/generator/bin/propel-gen'
 alias propel-gen='propel-gen12'
 alias pshell='phocoa shell'
 
