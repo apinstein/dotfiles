@@ -11,13 +11,6 @@ bindkey -v
 export EDITOR=vim
 
 # propel dev stuff
-export PHP_COMMAND=/opt/local/bin/php
-alias php4='/usr/local/bin/php'
-alias php5=$PHP_COMMAND
-alias phocoa='/Users/alanpinstein/dev/sandbox/phocoa/phocoa/phing/phocoa'
-alias propel-gen12='/Users/Shared/src/propel-1.2/generator/bin/propel-gen'
-alias propel-gen13='/Users/Shared/src/propel-1.2/generator/bin/propel-gen'
-alias propel-gen='propel-gen12'
 alias pshell='phocoa shell'
 
 # aliases
@@ -55,7 +48,7 @@ alias xdebug-off='unset XDEBUG_CONFIG'
 
 #login shortcuts
 alias sc-prod='ssh -A apinstein@showcasere.com'
-alias sc-staging='ssh -A apinstein@216.114.79.44'
+alias sc-vm0='ssh -A apinstein@216.114.79.44'
 alias sc-www0='ssh -A apinstein@216.114.79.46'
 alias startatlanta='ssh -A apinstein@216.114.79.47'
 alias imac='ssh -A alanpinstein@showcase.dnsalias.com'
