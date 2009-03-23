@@ -17,7 +17,7 @@ else
 fi
 unset idfile
 # trick to get ssh-agent reconnected after re-attaching screen
-ln -sf "$SSH_AUTH_SOCK" "/tmp/ssh-agent-$USER-screen"
+test $SSH_AUTH_SOCK && ln -sf "$SSH_AUTH_SOCK" "/tmp/ssh-agent-$USER-screen"
 
 # line editing
 export EDITOR=vi
