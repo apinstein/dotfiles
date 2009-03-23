@@ -1,3 +1,5 @@
+# trick to make ssh-agent reconnect when resuming screen
+setenv SSH_AUTH_SOCK "/tmp/ssh-agent-$USER-screen"
 startup_message off
 vbell on
 hardstatus alwayslastline

@@ -30,6 +30,7 @@ set autoindent    " always set autoindenting on
 set formatoptions=qroct
 set textwidth=0   " Don't wrap words by default
 set nobackup    " Don't keep a backup file
+set nowritebackup
 set viminfo='20,\"50  " read/write a .viminfo file, don't store more than 50 lines of registers
 set history=50    " keep 50 lines of command line history
 set ruler   " show the cursor position all the time

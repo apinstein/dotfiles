@@ -24,6 +24,7 @@ alias bigdirs='du -Sh ./ | grep -v "^-1" | grep "^[0-9]\\+M"'
 alias base64urldecode='tr "\-_" "+/" | base64 -d | more'
 alias dailysales='tar -x opt/showcase/log/dailysales.txt.log -O -zf `ls -1t /Volumes/Scratchy/backup/production/showcase/alans-showcase-backup.200*tgz | head -1` > ~/Documents/Business/ShowCase/Admin/daily-sales.tab'
 alias vi=vim
+alias vipager='vim -R -'
 alias sgrep="grep --exclude '*.svn*' $*"
 alias selenium='java -jar /usr/local/bin/selenium-server.jar'
 
@@ -51,6 +52,9 @@ alias sc-www0='ssh -A apinstein@216.114.79.46'
 alias startatlanta='ssh -A apinstein@216.114.79.47'
 alias imac='ssh -A alanpinstein@showcase.dnsalias.com'
 
+# postgres helpers
+alias pglog=pqa\ -file\ /Users/postgres/data/pg_log/postgresql-`date +'%a'`.log\ -normalize\ -top\ 5
+
 # ZSH setup
 if [ $WINDOW ]; then
     PROMPT="[$WINDOW:%{[1;46m%}%h%{[1;0m%}.%?%{[1;0m%}]:> "
@@ -68,6 +72,7 @@ zstyle ':completion:*' completer _expand _complete
 zstyle ':completion:*' completions 1
 zstyle ':completion:*' glob 1
 zstyle :compinstall filename '/Users/alanpinstein/.zshrc'
+source ~/.stuff/zsh/rake-completion.zsh
 
 autoload -Uz compinit
 compinit
