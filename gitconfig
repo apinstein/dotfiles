@@ -7,3 +7,4 @@
 	email = apinstein@mac.com
 [core]
 	excludesfile = /Users/alanpinstein/.gitignore
+    pager = tee
