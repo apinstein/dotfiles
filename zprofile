@@ -17,7 +17,12 @@ else
 fi
 unset idfile
 # trick to get ssh-agent reconnected after re-attaching screen
-test $SSH_AUTH_SOCK && ln -sf "$SSH_AUTH_SOCK" "/tmp/ssh-agent-$USER-screen"
+# the trick is to always have a valid SSH_AUTH_SOCK linked at a "known" location (/tmp/ssh-agent-$USER-screen). 
+# So, if there's an SSH_AUTH_SOCK (meaning ssh agent forwarding is on), then make sure that /tmp/ssh-agent-$USER-screen exists and points to a file that exists
+# Since SSH cleans up after itself by deleting the SSH_AUTH_SOCK file, any new login should look to re-establish a valid link.
+if [ ! -z $SSH_AUTH_SOCK -a -L "/tmp/ssh-agent-$USER-screen" -a ! -e `readlink /tmp/ssh-agent-$USER-screen` ]; then
+    ln -sf "$SSH_AUTH_SOCK" "/tmp/ssh-agent-$USER-screen"
+fi
 
 # line editing
 export EDITOR=vi
@@ -36,10 +41,10 @@ source ~/.zprofile.local
 
 # auto-run screen, but only once
 # MUST be done after local .zprofile which usually include PATH munging.
-if ps x | grep "SCREEN$" &> /dev/null
+if ps x | grep "SCREEN -S MainScreen" &> /dev/null
 then
     echo "Screen is already running."
 else
     echo "Starting screen..."
-    screen
+    screen -S MainScreen
 fi
