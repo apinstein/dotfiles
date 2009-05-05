@@ -41,7 +41,7 @@ source ~/.zprofile.local
 
 # auto-run screen, but only once
 # MUST be done after local .zprofile which usually include PATH munging.
-if ps x | grep "SCREEN -S MainScreen" &> /dev/null
+if ps x | grep "SCREEN -S MainScreen" | grep -v grep &> /dev/null
 then
     echo "Screen is already running."
 else
