@@ -20,8 +20,20 @@ unset idfile
 # the trick is to always have a valid SSH_AUTH_SOCK linked at a "known" location (/tmp/ssh-agent-$USER-screen). 
 # So, if there's an SSH_AUTH_SOCK (meaning ssh agent forwarding is on), then make sure that /tmp/ssh-agent-$USER-screen exists and points to a file that exists
 # Since SSH cleans up after itself by deleting the SSH_AUTH_SOCK file, any new login should look to re-establish a valid link.
-if [ ! -z $SSH_AUTH_SOCK -a -L "/tmp/ssh-agent-$USER-screen" -a ! -e `readlink /tmp/ssh-agent-$USER-screen` ]; then
-    ln -sf "$SSH_AUTH_SOCK" "/tmp/ssh-agent-$USER-screen"
+# ssh-agent forwarding on
+if [ ! -z $SSH_AUTH_SOCK ]
+then
+    if [ ! -L "/tmp/ssh-agent-$USER-screen" ] # create link if one doesn't exit
+    then
+        ln -s "$SSH_AUTH_SOCK" "/tmp/ssh-agent-$USER-screen"
+    else
+        if [ ! -e `readlink /tmp/ssh-agent-$USER-screen` ] # if link exists and doesn't point to a valid file, re-create link to current SSH_AUTH_SOCK
+        then
+            ln -sf "$SSH_AUTH_SOCK" "/tmp/ssh-agent-$USER-screen"
+        else
+            echo "ssh-agent to screen patching already configured and working"
+        fi
+    fi
 fi
 
 # line editing
