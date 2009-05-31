@@ -1,7 +1,0 @@
-[color]
-	diff = auto
-	status = auto
-	branch = auto
-[core]
-	excludesfile = /Users/alanpinstein/.gitignore
-    pager = tee

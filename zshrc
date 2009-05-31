@@ -12,6 +12,13 @@ export EDITOR=vim
 # ftp
 export FTP_PASSIVE=1
 
+# git
+git config --global color.diff auto
+git config --global color.status auto
+git config --global color.branch auto
+git config --global core.excludesfile "$HOME/.gitignore"
+git config --global core.pager tee
+
 # aliases
 alias l='ls -alhG'
 alias lsd='ls -ld *(-/DN)'
