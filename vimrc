@@ -56,7 +56,7 @@ compiler php
 " for showcase
 set tags+=~/dev/sandbox/showcase/tags
 set tags+=~/dev/sandbox/showcase-dpi-dev/tags
-set tags+=~/dev/sandbox/phocoa/docs/tags
+set tags+=~/dev/sandbox/phocoa/phocoa/docs/tags
 set tags+=~/dev/sandbox/showcaseng/showcaseng/tags
 
 " Function to close HTML tags

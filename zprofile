@@ -36,15 +36,6 @@ then
     fi
 fi
 
-# line editing
-export EDITOR=vi
-
-# ftp
-export FTP_PASSIVE=1
-
-# java
-export CLASSPATH=$CLASSPATH:/Applications/dieselpoint-search/lib/diesel-3.5.1.jar:/Applications/dieselpoint-search/lib/javax.servlet.jar
-
 # fixes bug where Terminal.app doesn't let you scroll back through the history.
 export TERM=screen
 
