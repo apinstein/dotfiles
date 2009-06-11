@@ -44,16 +44,19 @@ function precmd { # runs before the prompt is rendered each time
 
     # show screen window # if available
     if [ $WINDOW ]; then
-        PR_SCREEN="$WINDOW."
+        PR_SCREEN="$WINDOW"
     fi
 
-    [ $exitstatus -eq 0 ] && PR_LAST_EXIT_COLOR="%{$fg_bold[green]%}" || PR_LAST_EXIT_COLOR="%{$fg_bold[red]%}"
-}
-PROMPT='[\
+    [ $exitstatus -eq 0 ] && PR_LAST_EXIT="" || PR_LAST_EXIT=" %{$fg_bold[red]%}%?%{$reset_color%}"
+
+    # put in here so length recalulation works well and prompts don't wrap
+    PROMPT='[\
 $PR_SCREEN\
-%{${PR_LAST_EXIT_COLOR}%}%?%{$reset_color%}\
 $(git_current_branch)\
-]:> '
+]:\
+${PR_LAST_EXIT}\
+> '
+}
 RPROMPT=" $USERNAME@%M:%~"     # prompt for right side of screen
 
 HISTSIZE=1000
