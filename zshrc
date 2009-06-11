@@ -1,10 +1,3 @@
-if [ $WINDOW ]; then
-    PROMPT="[$WINDOW:%{[1;46m%}%h%{[1;0m%}.%?%{[1;0m%}]:> "
-else
-    PROMPT="[%{[1;46m%}%h%{[1;0m%}.%?%{[1;0m%}]:> "
-fi
-RPROMPT=" $USERNAME@%M:%~"     # prompt for right side of screen
-
 # line editing and default editor
 bindkey -v
 export EDITOR=vim
@@ -36,13 +29,33 @@ alias svnupdiff='svn diff -r BASE:HEAD .'
 alias xdebug-on='export XDEBUG_CONFIG="idekey="'
 alias xdebug-off='unset XDEBUG_CONFIG'
 
-# ZSH setup
-if [ $WINDOW ]; then
-    PROMPT="[$WINDOW:%{[1;46m%}%h%{[1;0m%}.%?%{[1;0m%}]:> "
-else
-    PROMPT="[%{[1;46m%}%h%{[1;0m%}.%?%{[1;0m%}]:> "
-fi
+# Prompts: see http://aperiodic.net/phil/prompt/
+setopt prompt_subst
+autoload -U colors
+colors
+
+git_current_branch() {
+    ref=$(git-symbolic-ref HEAD 2> /dev/null) || return
+    echo " git:${ref#refs/heads/} "
+}
+
+function precmd { # runs before the prompt is rendered each time
+    local exitstatus=$? 
+
+    # show screen window # if available
+    if [ $WINDOW ]; then
+        PR_SCREEN="$WINDOW."
+    fi
+
+    [ $exitstatus -eq 0 ] && PR_LAST_EXIT_COLOR="%{$fg_bold[green]%}" || PR_LAST_EXIT_COLOR="%{$fg_bold[red]%}"
+}
+PROMPT='[\
+$PR_SCREEN\
+%{${PR_LAST_EXIT_COLOR}%}%?%{$reset_color%}\
+$(git_current_branch)\
+]:> '
 RPROMPT=" $USERNAME@%M:%~"     # prompt for right side of screen
+
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.history
