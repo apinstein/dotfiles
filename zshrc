@@ -36,7 +36,7 @@ colors
 
 git_current_branch() {
     ref=$(git-symbolic-ref HEAD 2> /dev/null) || return
-    echo " git:${ref#refs/heads/} "
+    echo " git@${ref#refs/heads/} "
 }
 
 function precmd { # runs before the prompt is rendered each time
