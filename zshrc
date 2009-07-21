@@ -5,13 +5,6 @@ export EDITOR=vim
 # ftp
 export FTP_PASSIVE=1
 
-# git
-git config --global color.diff auto
-git config --global color.status auto
-git config --global color.branch auto
-git config --global core.excludesfile "$HOME/.gitignore"
-git config --global core.pager tee
-
 # aliases
 alias l='ls -alhG'
 alias lsd='ls -ld *(-/DN)'
@@ -69,10 +62,15 @@ zstyle ':completion:*' completer _expand _complete
 zstyle ':completion:*' completions 1
 zstyle ':completion:*' glob 1
 zstyle :compinstall filename '~/.zshrc'
-source ~/.stuff/zsh/rake-completion.zsh
+zstyle :compinstall filename '~/.stuff/zsh/rake-completion.zsh'
 
 autoload -Uz compinit
-compinit
+if [ $USER = "root" ]; then
+    # sudo'd shells run this zshrc; root was writing out zcompdump and thus breaking perms for the main user. have root skip dumping; the file should be there anyway.
+    compinit -D
+else
+    compinit
+fi
 # End of lines added by compinstall
 
 # override with local settings
