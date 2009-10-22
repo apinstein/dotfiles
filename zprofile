@@ -4,13 +4,13 @@ if ps xu -U `whoami` | grep "ssh-agent$" &> /dev/null
 then
         test ! "$SSH_CLIENT" && test -r $idfile && eval `cat $idfile`
 else
-        if eval `ssh-agent`
+        if eval `ssh-agent -t 43200`
         then
                 export SSH_AGENT_PID
                 export SSH_AUTH_SOCK
                 echo "export SSH_AGENT_PID=$SSH_AGENT_PID" > $idfile
                 echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> $idfile
-                ssh-add ~/.ssh/alankey
+                echo "Use ssh-add to add desired keys. I recommend an alias to add all keys you want since we have a default timeout of 12 hours."
         else
                 rm -f $idfile
         fi
