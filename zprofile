@@ -1,6 +1,7 @@
 # another way, if you don't have pidof or need to know it's _your_ agent
 idfile=~/.agentid
-if ps xu -U `whoami` | grep "ssh-agent$" &> /dev/null
+# already exists ssh-agent? flags so we don't false-positive on the grep
+if ps x -o 'command' -U `whoami` | grep "^ssh-agent" &> /dev/null
 then
         test ! "$SSH_CLIENT" && test -r $idfile && eval `cat $idfile`
 else
