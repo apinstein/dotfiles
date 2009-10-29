@@ -53,3 +53,16 @@ else
 # 4.0.2 is the only version i can find that doesn't blow away the ENV (esp PATH).
     /sw/bin/screen -S MainScreen
 fi
+
+# git
+git config --global color.diff auto
+git config --global color.status auto
+git config --global color.branch auto
+git config --global core.excludesfile "$HOME/.gitignore"
+git config --global core.pager tee
+git config --global push.default current
+git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.staging-tags 'tag -l "staging*"'
+
