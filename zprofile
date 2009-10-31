@@ -1,16 +1,17 @@
 # another way, if you don't have pidof or need to know it's _your_ agent
 idfile=~/.agentid
-if ps xu -U `whoami` | grep "ssh-agent$" &> /dev/null
+# already exists ssh-agent? flags so we don't false-positive on the grep
+if ps x -o 'command' -U `whoami` | grep "^ssh-agent" &> /dev/null
 then
         test ! "$SSH_CLIENT" && test -r $idfile && eval `cat $idfile`
 else
-        if eval `ssh-agent`
+        if eval `ssh-agent -t 43200`
         then
                 export SSH_AGENT_PID
                 export SSH_AUTH_SOCK
                 echo "export SSH_AGENT_PID=$SSH_AGENT_PID" > $idfile
                 echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> $idfile
-                ssh-add ~/.ssh/alankey
+                echo "Use ssh-add to add desired keys. I recommend an alias to add all keys you want since we have a default timeout of 12 hours."
         else
                 rm -f $idfile
         fi
@@ -54,3 +55,16 @@ else
     fi
     $SCREEN -S MainScreen
 fi
+
+# git
+git config --global color.diff auto
+git config --global color.status auto
+git config --global color.branch auto
+git config --global core.excludesfile "$HOME/.gitignore"
+git config --global core.pager tee
+git config --global push.default current
+git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.staging-tags 'tag -l "staging*"'
+

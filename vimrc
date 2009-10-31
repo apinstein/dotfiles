@@ -25,7 +25,7 @@ set ts=4  " tab stop
 set noerrorbells
 " set magic " extend regexp with magic(do help magic) -- I don't think I want this b/c it makes PHP preg and vim act differently and it's confusing
 set bs=indent,eol,start
-set pastetoggle=π   " meta-p (works on mac, not sure elsewhere)
+set pastetoggle=<F5>   " meta-p (works on mac, not sure elsewhere)
 set smartindent   
 set autoindent    " always set autoindenting on
 set formatoptions=qroct
@@ -40,6 +40,7 @@ set showcmd   " Show (partial) command in status line.
 set showmatch   " Show matching brackets.
 set autowrite    " Automatically save before commands like :next and :make
 set fileformats=unix,mac,dos " accepted file formats
+set smartcase
 
 " syntax coloring
 syntax on
