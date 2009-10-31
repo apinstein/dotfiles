@@ -50,8 +50,10 @@ then
     echo "Screen is already running."
 else
     echo "Starting screen..."
-# 4.0.2 is the only version i can find that doesn't blow away the ENV (esp PATH).
-    /sw/bin/screen -S MainScreen
+    if [ -z $SCREEN ]; then
+        SCREEN=screen
+    fi
+    $SCREEN -S MainScreen
 fi
 
 # git
