@@ -1,3 +1,5 @@
+# configure ssh-agent
+alias ssh-keys-add-mine='echo "WARNING! No keys added to your ssh-agent. Set up \"alias ssh-keys-add-mine=ssh-add <your keys>\" in .zprofile.local.\nIt will be used to auto-add your keys in new shells and also can be used to re-add keys once expired (every 12 hours)."'
 # another way, if you don't have pidof or need to know it's _your_ agent
 idfile=~/.agentid
 # already exists ssh-agent? flags so we don't false-positive on the grep
@@ -11,7 +13,7 @@ else
                 export SSH_AUTH_SOCK
                 echo "export SSH_AGENT_PID=$SSH_AGENT_PID" > $idfile
                 echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> $idfile
-                echo "Use ssh-add to add desired keys. I recommend an alias to add all keys you want since we have a default timeout of 12 hours."
+                echo "Use ssh-add to add desired keys. I recommend an alias called 'ssh-keys-add-mine' to add all keys you want since we have a default timeout of 12 hours."
         else
                 rm -f $idfile
         fi
@@ -36,25 +38,13 @@ then
         fi
     fi
 fi
+# end ssh-agent setup.
 
 # fixes bug where Terminal.app doesn't let you scroll back through the history.
 export TERM=screen
 
 # run local .zprofile
 source ~/.zprofile.local
-
-# auto-run screen, but only once
-# MUST be done after local .zprofile which usually include PATH munging.
-if ps x | grep "SCREEN -S MainScreen" | grep -v grep &> /dev/null
-then
-    echo "Screen is already running."
-else
-    echo "Starting screen..."
-    if [ -z $SCREEN ]; then
-        SCREEN=screen
-    fi
-    $SCREEN -S MainScreen
-fi
 
 # git
 git config --global color.diff auto
@@ -68,3 +58,23 @@ git config --global alias.ci commit
 git config --global alias.st status
 git config --global alias.staging-tags 'tag -l "staging*"'
 
+# add ssh-keys
+ssh-add -l 2>&1 > /dev/null
+if [ "$?" != 0 ]; then
+    echo "Running ssh-keys-add-mine to add your keys since there are no identities in your ssh-agent."
+    ssh-keys-add-mine
+fi
+
+# auto-run screen, but only once
+# MUST be done after local .zprofile which usually include PATH munging.
+# MUST be done last or the rest of the .zprofile script doesn't run until after screen terminates.
+if ps x | grep "SCREEN -S MainScreen" | grep -v grep &> /dev/null
+then
+    echo "Screen is already running."
+else
+    echo "Starting screen..."
+    if [ -z $SCREEN ]; then
+        SCREEN=screen
+    fi
+    $SCREEN -S MainScreen
+fi
