@@ -56,6 +56,7 @@ git config --global push.default current
 git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 git config --global alias.ci commit
 git config --global alias.st status
+git config --global alias.co checkout
 git config --global alias.staging-tags 'tag -l "staging*"'
 
 # add ssh-keys
