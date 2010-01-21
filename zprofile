@@ -58,6 +58,8 @@ git config --global alias.ci commit
 git config --global alias.st status
 git config --global alias.co checkout
 git config --global alias.staging-tags 'tag -l "staging*"'
+# tell gitflow to use 'lg' as our log command
+export git_log_command=lg
 
 # add ssh-keys
 ssh-add -l 2>&1 > /dev/null
