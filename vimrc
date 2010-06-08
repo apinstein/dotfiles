@@ -42,6 +42,7 @@ set showmatch   " Show matching brackets.
 set autowrite    " Automatically save before commands like :next and :make
 set fileformats=unix,mac,dos " accepted file formats
 set smartcase
+set ignorecase
 set linebreak
 
 " syntax coloring
