@@ -58,6 +58,7 @@ git config --global alias.ci commit
 git config --global alias.st status
 git config --global alias.co checkout
 git config --global alias.staging-tags 'tag -l "staging*"'
+git config --global core.whitespace 'trailing-space,space-before-tab,tab-in-indent'
 # tell gitflow to use 'lg' as our log command
 export git_log_command=lg
 
