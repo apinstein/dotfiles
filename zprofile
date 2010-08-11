@@ -68,7 +68,7 @@ fi
 # auto-run screen, but only once
 # MUST be done after local .zprofile which usually include PATH munging.
 # MUST be done last or the rest of the .zprofile script doesn't run until after screen terminates.
-if ps x | grep "SCREEN -S MainScreen" | grep -v grep &> /dev/null
+if ps x | grep -i "SCREEN -S MainScreen" | grep -v grep &> /dev/null
 then
     echo "Screen is already running."
 else
