@@ -6,7 +6,7 @@ export EDITOR=vim
 export FTP_PASSIVE=1
 
 # aliases
-alias l='ls -alhG'
+alias l='ls -alh'
 alias lsd='ls -ld *(-/DN)'
 alias pshell='phocoa shell'
 alias top='top -u'
