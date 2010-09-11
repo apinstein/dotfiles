@@ -19,7 +19,7 @@ alias svnupdry='svn merge --dry-run -r BASE:HEAD .'
 alias svnupdiff='svn diff -r BASE:HEAD .'
 
 # php helpers
-alias xdebug-on='export XDEBUG_CONFIG="idekey=macgdbp"'
+alias xdebug-on='export XDEBUG_CONFIG="remote_enable=1"'
 alias xdebug-off='unset XDEBUG_CONFIG'
 
 # Prompts: see http://aperiodic.net/phil/prompt/
