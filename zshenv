@@ -44,7 +44,6 @@ unset idfile is_local_client
 screen_ssh_agent_canonical_sock="/tmp/ssh-agent-$USER-screen"
 if [ ! -z $SSH_AUTH_SOCK ] && [ $SSH_AUTH_SOCK != $screen_ssh_agent_canonical_sock ]
 then
-    echo "SSH_AUTH_SOCK: $SSH_AUTH_SOCK"
     # if link doesn't exist
     # OR if link doesn't point to a valid file
     # OR it links to a valid file but not the current SSH_AUTH_SOCK (due to agent fwd most likely)
