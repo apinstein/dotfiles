@@ -1,3 +1,6 @@
+set nocp
+filetype plugin on
+
 " for moving between windows with ease:
 map <C-j> <C-w>j80<C-w>+ " up one window, maximized
 map <C-k> <C-w>k80<C-w>+ " down one window, maximized
@@ -47,7 +50,8 @@ set linebreak
 " syntax coloring
 syntax on
 " add flash syntax support, from http://www.abdulqabiz.com/blog/archives/flash_and_actionscript/vim_actionscript_and.php
-au BufNewFile,BufRead *.as set filetype=actionscript
+au BufNewFile,BufRead *.as set filetype=actionscript syntax=actionscript
+au BufNewFile,BufRead *.php set filetype=php syntax=php
 
 " php options - eventually put these in an autocmd group or whatever to make them local to PHP files
 set keywordprg=~/.vim/php_lookup " map shift-k to lookup commands on PHP web site
