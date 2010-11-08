@@ -1,24 +1,34 @@
 # configure ssh-agent
 alias ssh-keys-add-mine='echo "WARNING! No keys added to your ssh-agent. Set up \"alias ssh-keys-add-mine=ssh-add <your keys>\" in .zprofile.local.\nIt will be used to auto-add your keys in new shells and also can be used to re-add keys once expired (every 12 hours)."'
-# another way, if you don't have pidof or need to know it's _your_ agent
-ssh_agent_manager_info=~/.agentid
-# already exists ssh-agent? flags so we don't false-positive on the grep
-if ps x -o 'command' -U `whoami` | grep "^ssh-agent" &> /dev/null
+idfile=~/.agentid
+if [ -z $SSH_CLIENT ];
 then
-        test ! "$SSH_AGENT_MANAGER" && test -r $ssh_agent_manager_info && eval `cat $ssh_agent_manager_info`
+    is_local_client=YES
 else
+    is_local_client=NO
+fi
+if [ -z $SSH_AUTH_SOCK ]
+then
+    if ps x -o 'command' -U `whoami` | grep "^ssh-agent" &> /dev/null
+    then
+        # Attach current shell to existing *local* ssh-agent session
+        test -r $idfile && eval `cat $idfile` || echo "ERROR: expected $idfile to exist but it does not..."
+    elif [ $is_local_client = "YES" ]
+    then
+        # Create a new *local* ssh-agent session
         if eval `ssh-agent -t 43200`
         then
-                export SSH_AGENT_MANAGER=1
-                export SSH_AGENT_PID
-                export SSH_AUTH_SOCK
-                echo "export SSH_AGENT_MANAGER=1" > $ssh_agent_manager_info
-                echo "export SSH_AGENT_PID=$SSH_AGENT_PID" >> $ssh_agent_manager_info
-                echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> $ssh_agent_manager_info
-                echo "Use ssh-add to add desired keys. I recommend an alias called 'ssh-keys-add-mine' to add all keys you want since we have a default timeout of 12 hours."
+            export SSH_AGENT_PID
+            export SSH_AUTH_SOCK
+            echo "export SSH_AGENT_PID=$SSH_AGENT_PID" > $idfile
+            echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> $idfile
+            echo "Use ssh-add to add desired keys. I recommend an alias called 'ssh-keys-add-mine' to add all keys you want since we have a default timeout of 12 hours."
         else
-                rm -f $ssh_agent_manager_info
+            rm -f $idfile
         fi
+    else
+        echo "Skipping ssh-agent setup since this is a remote session."
+    fi
 fi
 unset ssh_agent_manager_info
 # trick to get ssh-agent reconnected after re-attaching screen
@@ -28,16 +38,14 @@ unset ssh_agent_manager_info
 # ssh-agent forwarding on
 if [ ! -z $SSH_AUTH_SOCK ]
 then
-    if [ ! -L "/tmp/ssh-agent-$USER-screen" ] # create link if one doesn't exit
+    screen_ssh_agent_canonical_sock="/tmp/ssh-agent-$USER-screen"
+    # if link doesn't exist
+    # OR if link doesn't point to a valid file
+    # OR it links to a valid file but not the current SSH_AUTH_SOCK (due to agent fwd most likely)
+    # THEN re-create link to current SSH_AUTH_SOCK
+    if [ ! -e $screen_ssh_agent_canonical_sock ] || [ ! -e `readlink $screen_ssh_agent_canonical_sock` ] || [ `readlink $screen_ssh_agent_canonical_sock` != $SSH_AUTH_SOCK ]
     then
-        ln -s "$SSH_AUTH_SOCK" "/tmp/ssh-agent-$USER-screen"
-    else
-        if [ ! -e `readlink /tmp/ssh-agent-$USER-screen` ] # if link exists and doesn't point to a valid file, re-create link to current SSH_AUTH_SOCK
-        then
-            ln -sf "$SSH_AUTH_SOCK" "/tmp/ssh-agent-$USER-screen"
-        else
-            echo "ssh-agent to screen patching already configured and working"
-        fi
+        ln -sf "$SSH_AUTH_SOCK" "/tmp/ssh-agent-$USER-screen"
     fi
 fi
 # end ssh-agent setup.
@@ -47,6 +55,14 @@ export TERM=screen
 
 # run local .zprofile
 source ~/.zprofile.local
+
+# add ssh-keys; ssh-add will exit(1) if there is an agent but no identities.
+# this line is below the .zprofile.local since that's where ssh-keys-add-mine is defined
+(ssh-add -l 2>&1) > /dev/null
+if [ $? = "1" ]; then
+    echo "Running ssh-keys-add-mine to add your keys since there are no identities in your ssh-agent."
+    ssh-keys-add-mine
+fi
 
 # git
 git config --global color.diff auto
@@ -65,13 +81,6 @@ git config --global core.whitespace 'trailing-space,space-before-tab,tab-in-inde
 git config --global branch.autosetuprebase always
 # tell gitflow to use 'lg' as our log command
 export git_log_command=lg
-
-# add ssh-keys
-ssh-add -l 2>&1 > /dev/null
-if [ "$?" = 1 ]; then
-    echo "Running ssh-keys-add-mine to add your keys since there are no identities in your ssh-agent."
-    ssh-keys-add-mine
-fi
 
 # auto-run screen, but only once
 # MUST be done after local .zprofile which usually include PATH munging.
