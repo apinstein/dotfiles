@@ -1,7 +1,7 @@
 # configure ssh-agent
 alias ssh-keys-add-mine='echo "WARNING! No keys added to your ssh-agent. Set up \"alias ssh-keys-add-mine=ssh-add <your keys>\" in .zprofile.local.\nIt will be used to auto-add your keys in new shells and also can be used to re-add keys once expired (every 12 hours)."'
 idfile=~/.agentid
-if [ -z $SSH_CLIENT ];
+if [ -z $SSH_CLIENT ]
 then
     is_local_client=YES
 else
@@ -30,7 +30,7 @@ then
         echo "Skipping ssh-agent setup since this is a remote session."
     fi
 fi
-unset ssh_agent_manager_info
+unset idfile
 # trick to get ssh-agent reconnected after re-attaching screen
 # the trick is to always have a valid SSH_AUTH_SOCK linked at a "known" location (/tmp/ssh-agent-$USER-screen). 
 # So, if there's an SSH_AUTH_SOCK (meaning ssh agent forwarding is on), then make sure that /tmp/ssh-agent-$USER-screen exists and points to a file that exists
