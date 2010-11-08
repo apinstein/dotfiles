@@ -1,3 +1,6 @@
+set nocp
+filetype plugin on
+
 " for moving between windows with ease:
 map <C-j> <C-w>j80<C-w>+ " up one window, maximized
 map <C-k> <C-w>k80<C-w>+ " down one window, maximized
@@ -22,6 +25,7 @@ set wrap
 set expandtab
 set sw=4  " shift width 
 set ts=4  " tab stop
+set modelines=10
 set noerrorbells
 " set magic " extend regexp with magic(do help magic) -- I don't think I want this b/c it makes PHP preg and vim act differently and it's confusing
 set bs=indent,eol,start
@@ -40,12 +44,14 @@ set showcmd   " Show (partial) command in status line.
 set showmatch   " Show matching brackets.
 set autowrite    " Automatically save before commands like :next and :make
 set fileformats=unix,mac,dos " accepted file formats
-set smartcase
+set ignorecase smartcase
+set linebreak
 
 " syntax coloring
 syntax on
 " add flash syntax support, from http://www.abdulqabiz.com/blog/archives/flash_and_actionscript/vim_actionscript_and.php
-au BufNewFile,BufRead *.as set filetype=actionscript
+au BufNewFile,BufRead *.as set filetype=actionscript syntax=actionscript
+au BufNewFile,BufRead *.php set filetype=php syntax=php
 
 " php options - eventually put these in an autocmd group or whatever to make them local to PHP files
 set keywordprg=~/.vim/php_lookup " map shift-k to lookup commands on PHP web site

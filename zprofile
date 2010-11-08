@@ -1,24 +1,26 @@
 # configure ssh-agent
 alias ssh-keys-add-mine='echo "WARNING! No keys added to your ssh-agent. Set up \"alias ssh-keys-add-mine=ssh-add <your keys>\" in .zprofile.local.\nIt will be used to auto-add your keys in new shells and also can be used to re-add keys once expired (every 12 hours)."'
 # another way, if you don't have pidof or need to know it's _your_ agent
-idfile=~/.agentid
+ssh_agent_manager_info=~/.agentid
 # already exists ssh-agent? flags so we don't false-positive on the grep
 if ps x -o 'command' -U `whoami` | grep "^ssh-agent" &> /dev/null
 then
-        test ! "$SSH_CLIENT" && test -r $idfile && eval `cat $idfile`
+        test ! "$SSH_AGENT_MANAGER" && test -r $ssh_agent_manager_info && eval `cat $ssh_agent_manager_info`
 else
         if eval `ssh-agent -t 43200`
         then
+                export SSH_AGENT_MANAGER=1
                 export SSH_AGENT_PID
                 export SSH_AUTH_SOCK
-                echo "export SSH_AGENT_PID=$SSH_AGENT_PID" > $idfile
-                echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> $idfile
+                echo "export SSH_AGENT_MANAGER=1" > $ssh_agent_manager_info
+                echo "export SSH_AGENT_PID=$SSH_AGENT_PID" >> $ssh_agent_manager_info
+                echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> $ssh_agent_manager_info
                 echo "Use ssh-add to add desired keys. I recommend an alias called 'ssh-keys-add-mine' to add all keys you want since we have a default timeout of 12 hours."
         else
-                rm -f $idfile
+                rm -f $ssh_agent_manager_info
         fi
 fi
-unset idfile
+unset ssh_agent_manager_info
 # trick to get ssh-agent reconnected after re-attaching screen
 # the trick is to always have a valid SSH_AUTH_SOCK linked at a "known" location (/tmp/ssh-agent-$USER-screen). 
 # So, if there's an SSH_AUTH_SOCK (meaning ssh agent forwarding is on), then make sure that /tmp/ssh-agent-$USER-screen exists and points to a file that exists
@@ -53,14 +55,20 @@ git config --global color.branch auto
 git config --global core.excludesfile "$HOME/.gitignore"
 git config --global core.pager tee
 git config --global push.default current
-git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+git config --global alias.lg "log --graph --decorate --date=relative --abbrev-commit --pretty=format:'%Cred%h%Creset [%an]%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset'"
+git config --global alias.recent "reflog -20 --date=relative"
 git config --global alias.ci commit
 git config --global alias.st status
+git config --global alias.co checkout
 git config --global alias.staging-tags 'tag -l "staging*"'
+git config --global core.whitespace 'trailing-space,space-before-tab,tab-in-indent'
+git config --global branch.autosetuprebase always
+# tell gitflow to use 'lg' as our log command
+export git_log_command=lg
 
 # add ssh-keys
 ssh-add -l 2>&1 > /dev/null
-if [ "$?" != 0 ]; then
+if [ "$?" = 1 ]; then
     echo "Running ssh-keys-add-mine to add your keys since there are no identities in your ssh-agent."
     ssh-keys-add-mine
 fi
