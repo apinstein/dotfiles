@@ -1,5 +1,6 @@
 set nocp
 filetype plugin on
+filetype plugin indent on
 
 " for moving between windows with ease:
 map <C-j> <C-w>j80<C-w>+ " up one window, maximized
