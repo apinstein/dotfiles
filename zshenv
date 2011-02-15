@@ -31,7 +31,7 @@ then
             rm -f $idfile
         fi
     else
-        echo "Skipping ssh-agent setup since this is a remote session."
+        tty -s && echo "Skipping ssh-agent setup since this is a remote session."
     fi
 fi
 unset idfile is_local_client
