@@ -62,3 +62,6 @@ if [ $? = "1" ]; then
     ssh-keys-add-mine
 fi
 # end ssh-agent setup.
+
+# set up RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
