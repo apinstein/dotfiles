@@ -24,6 +24,7 @@ then
         then
             export SSH_AGENT_PID
             export SSH_AUTH_SOCK
+            # output ok; only happens on local (interactive) terminal
             echo "export SSH_AGENT_PID=$SSH_AGENT_PID" > $idfile
             echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> $idfile
             echo "Use ssh-add to add desired keys. I recommend an alias called 'ssh-keys-add-mine' to add all keys you want since we have a default timeout of 12 hours."
@@ -58,8 +59,9 @@ fi
 # this line is below the .zprofile.local since that's where ssh-keys-add-mine is defined
 (ssh-add -l 2>&1) > /dev/null
 if [ $? = "1" ]; then
-    echo "Running ssh-keys-add-mine to add your keys since there are no identities in your ssh-agent."
-    ssh-keys-add-mine
+    tty -s && \
+        echo "Running ssh-keys-add-mine to add your keys since there are no identities in your ssh-agent." && \
+        ssh-keys-add-mine
 fi
 # end ssh-agent setup.
 
