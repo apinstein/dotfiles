@@ -62,11 +62,10 @@ let php_sql_query=1
 let php_htmlInStrings=1
 compiler php
 
-" for showcase
-set tags+=~/dev/sandbox/showcase/tags
-set tags+=~/dev/sandbox/showcase-dpi-dev/tags
-set tags+=~/dev/sandbox/phocoa/phocoa/docs/tags
-set tags+=~/dev/sandbox/showcaseng/showcaseng/tags
+" search for a tags file in dir containing file being worked on, and keep
+" going up dirs until a tags file is found
+" requires +path_extra to work properly
+set tags=./tags;
 
 " Function to close HTML tags
 nnoremap \hc :call InsertCloseTag()<CR>
