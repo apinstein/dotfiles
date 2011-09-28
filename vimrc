@@ -65,7 +65,7 @@ compiler php
 " search for a tags file in dir containing file being worked on, and keep
 " going up dirs until a tags file is found
 " requires +path_extra to work properly
-set tags=./tags;
+set tags+=./tags;
 
 " Function to close HTML tags
 nnoremap \hc :call InsertCloseTag()<CR>
