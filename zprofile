@@ -8,7 +8,7 @@ git config --global color.branch auto
 git config --global core.excludesfile "$HOME/.gitignore"
 git config --global core.pager tee
 git config --global push.default current
-git config --global alias.lg "log --graph --decorate --date=relative --abbrev-commit --pretty=format:'%Cred%h%Creset [%an]%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset'"
+git config --global alias.lg "log --graph --decorate --date=relative --abbrev-commit --pretty=format:'%Cred%h%Creset [%an]%C(yellow)%d%Creset %s %Cgreen(%ar)%Creset'"
 git config --global alias.recent "reflog -20 --date=relative"
 git config --global alias.ci commit
 git config --global alias.st status
