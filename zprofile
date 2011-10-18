@@ -1,5 +1,5 @@
-# fixes bug where Terminal.app doesn't let you scroll back through the history.
-export TERM=screen
+# we always use console from an xterm-color compatible terminal, tell the world.
+export TERM=xterm-color
 
 # git - since these munge the ~/.gitconfig, put them here so they don't compete against each other when screen spwans lots of shells
 git config --global color.diff auto

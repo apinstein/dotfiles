@@ -1,5 +1,12 @@
 # trick to make ssh-agent reconnect when resuming screen
 setenv SSH_AUTH_SOCK "/tmp/ssh-agent-$USER-screen"
+# Allow xterm / Terminal scrollbars to access the scrollback buffer. This
+# enables the behavior you'd expect, instead of losing the content that scrolls
+# out of the window.
+termcapinfo           linux     ti@:te@
+termcapinfo           xterm*    ti@:te@
+termcapinfo           screen    ti@:te@
+# misc config
 startup_message off
 vbell on
 hardstatus alwayslastline
