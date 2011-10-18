@@ -1,4 +1,7 @@
 set nocp
+" change the mapleader from \ to ,
+let mapleader=","
+
 filetype plugin on
 filetype plugin indent on
 
