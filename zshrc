@@ -9,7 +9,6 @@ export FTP_PASSIVE=1
 alias l='ls -alh --color'
 alias lsd='ls -ld *(-/DN)'
 alias pshell='phocoa shell'
-alias top='top -u'
 alias bigdirs='du -Sh ./ | grep -v "^-1" | grep "^[0-9]\\+M"'
 alias base64urldecode='tr "\-_" "+/" | base64 -d | more'
 alias vi=vim
@@ -48,6 +47,18 @@ ${PR_LAST_EXIT}\
 > '
 }
 RPROMPT=" $USERNAME@%M:%~"     # prompt for right side of screen
+
+# BUGFIX for older zsh that overwrite the last line of command output if there is no trailing newline.
+# See http://zsh.sourceforge.net/FAQ/zshfaq03.html, 3.23
+# Skip defining precmd if the PROMPT_SP option is available.
+if ! eval '[[ -o promptsp ]] 2>/dev/null'; then
+  function precmd {
+    # Output an inverse char and a bunch spaces.  We include
+    # a CR at the end so that any user-input that gets echoed
+    # between this output and the prompt doesn't cause a wrap.
+    print -nP "%B%S%#%s%b${(l:$((COLUMNS-1)):::):-}\r"
+  }
+fi
 
 HISTSIZE=1000
 SAVEHIST=1000

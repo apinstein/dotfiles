@@ -143,7 +143,7 @@ function! DoLint()
   elseif &filetype == 'ruby' || &filetype == 'rb'
     execute ":!ruby -c % | head -20"
   elseif &filetype == 'php'
-    execute ":!/opt/local/bin/php -l % | head -20"
+    execute ":!/usr/bin/php -l % | head -20"
   else
     echohl ErrorMsg
     echo 'No linter set up for filetype' &filetype
