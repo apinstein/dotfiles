@@ -9,7 +9,7 @@ filetype plugin indent on
 " (depends on) http://www.vim.org/scripts/script.php?script_id=3252
 nmap <Leader>f :FufFileWithCurrentBufferDir<CR>
 nmap <Leader>b :FufBuffer<CR>
-nmap <Leader>t :FufTaggedFile<CR>
+nmap <Leader>f :FufTaggedFile<CR>
 
 " for moving between windows with ease:
 map <C-j> <C-w>j80<C-w>+ " up one window, maximized
