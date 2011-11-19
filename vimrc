@@ -89,6 +89,8 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 " add dictionaries to autocomplete
 set complete+=k
+" command-mode autocompletion sanity
+set wildmode=list:longest
 
 " search for a tags file in dir containing file being worked on, and keep
 " going up dirs until a tags file is found
