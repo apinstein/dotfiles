@@ -5,6 +5,12 @@ let mapleader=","
 filetype plugin on
 filetype plugin indent on
 
+" mouse support
+if has("mouse")
+    set mouse=a
+    set ttymouse=xterm2
+endif
+
 " http://www.vim.org/scripts/script.php?script_id=1984
 " (depends on) http://www.vim.org/scripts/script.php?script_id=3252
 nmap <Leader>f :FufFileWithCurrentBufferDir<CR>
