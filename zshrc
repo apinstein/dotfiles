@@ -13,6 +13,7 @@ alias bigdirs='du -Sh ./ | grep -v "^-1" | grep "^[0-9]\\+M"'
 alias base64urldecode='tr "\-_" "+/" | base64 -d | more'
 alias vi=vim
 alias vipager='vim -R -'
+alias pb='git planbox'
 
 # php helpers
 alias xdebug-on='export XDEBUG_CONFIG="remote_enable=1"'
