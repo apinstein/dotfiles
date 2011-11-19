@@ -72,10 +72,23 @@ au BufNewFile,BufRead *.php set filetype=php syntax=php
 " php options - eventually put these in an autocmd group or whatever to make them local to PHP files
 set keywordprg=~/.vim/php_lookup " map shift-k to lookup commands on PHP web site
 set dictionary+=~/.vim/dictionaries/phpproto
-set complete+=k " add dictionaries to autocomplete
 let php_sql_query=1
 let php_htmlInStrings=1
 compiler php
+
+" autocompletion config
+" see http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
+set completeopt=longest,menuone
+" enter key autocomplete selected item
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" tab key autocomplete selected item
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+" add dictionaries to autocomplete
+set complete+=k
 
 " search for a tags file in dir containing file being worked on, and keep
 " going up dirs until a tags file is found
