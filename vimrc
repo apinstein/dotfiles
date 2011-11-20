@@ -1,9 +1,11 @@
+" a good idea
 set nocp
+filetype on " on osx must turn on then off to prevent vim from always exiting with status code 1
+filetype off
 
 " vundle setup
 " from: http://www.charlietanksley.net/philtex/sane-vim-plugin-management/
 " from: https://github.com/gmarik/vundle
-"filetype off " supposed to be required, but seems to work without it; when I turn it on vim always exists with status 1 :(
 set rtp+=~/.vim/vundle/ 
 call vundle#rc()
 " vim bundles
