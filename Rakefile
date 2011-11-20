@@ -26,8 +26,14 @@ require 'fileutils'
 
 task :default => :install
 
+desc "Pull git submodules"
+task :git_submodules do
+    puts "Initializing submodules..."
+    sh "git submodule init && git submodule update"
+end
+
 desc "install the dot files into user's home directory"
-task :install do
+task :install => :git_submodules do
   replace_all = false
   Dir['*'].each do |file|
     next if %w[Rakefile README LICENSE].include? file
@@ -68,7 +74,7 @@ task :install do
 end
 
 desc "VIM/Vundle"
-task :vimupdate do
+task :vimupdate => :git_submodules do
     puts "Updating vundle..."
     sh "git submodule update"
 
