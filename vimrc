@@ -21,6 +21,7 @@ Bundle 'vim-scripts/Align'
 Bundle 'LargeFile'
 Bundle 'FuzzyFinder'
 Bundle 'camelcasemotion'
+Bundle 'taglist.vim'
 " Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
 " /vim bundles
 " /vundle setup
@@ -35,6 +36,9 @@ let mapleader=","
 map <S-w> <Plug>CamelCaseMotion_w
 map <S-e> <Plug>CamelCaseMotion_e
 map <S-b> <Plug>CamelCaseMotion_b
+
+" taglist
+map + :TlistToggle<CR>
 
 " mouse support
 if has("mouse")
