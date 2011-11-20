@@ -63,6 +63,8 @@ task :install do
       link_file(file)
     end
   end
+
+  Rake::Task["vimupdate"].execute
 end
 
 desc "VIM/Vundle"
