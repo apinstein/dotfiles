@@ -1,0 +1,9 @@
+#!/bin/zsh
+func=$1
+pman=`which pman`
+if [ $? -eq 0 ]; then
+    # pear install doc.php.net/pman
+    $pman $func
+else
+    open -a Safari "http://www.php.net/${func}"
+fi
