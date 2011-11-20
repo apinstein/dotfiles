@@ -20,6 +20,7 @@ Bundle 'FuzzyFinder'
 Bundle 'L9'
 Bundle 'cecutil'
 Bundle 'file-line'
+" Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
 " /vim bundles
 " /vundle setup
 
