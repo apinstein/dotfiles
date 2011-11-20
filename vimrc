@@ -39,6 +39,8 @@ if exists(":Bundle")
     Bundle 'git://github.com/motemen/git-vim.git'
     " ideas for future?
     " Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
+    " NOTE: you should also use the solarized terminal theme for this to work correctly: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
+    Bundle 'https://github.com/altercation/vim-colors-solarized'
     " /vim bundles
 endif
 " /vundle setup
@@ -150,6 +152,10 @@ if has("mouse")
     endfunction
     map <Leader>m :call ToggleMouse()<CR>
 endif
+
+" solarized colorscheme
+set background=dark
+colorscheme solarized
 
 " http://www.vim.org/scripts/script.php?script_id=1984
 " (depends on) http://www.vim.org/scripts/script.php?script_id=3252
