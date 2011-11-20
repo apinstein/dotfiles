@@ -1,9 +1,21 @@
 set nocp
-" change the mapleader from \ to ,
-let mapleader=","
+
+" vundle setup
+" from: http://www.charlietanksley.net/philtex/sane-vim-plugin-management/
+"filetype off " supposed to be required, but seems to work without it; when I
+"turn it on vim always exists with status 1 BOO
+set rtp+=~/.vim/vundle/ 
+call vundle#rc()
+" vim bundles
+Bundle 'surround.vim'
+" /vim bundles
+" /vundle setup
 
 filetype plugin on
 filetype plugin indent on
+
+" change the mapleader from \ to ,
+let mapleader=","
 
 " mouse support
 if has("mouse")
