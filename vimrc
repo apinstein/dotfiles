@@ -2,13 +2,22 @@ set nocp
 
 " vundle setup
 " from: http://www.charlietanksley.net/philtex/sane-vim-plugin-management/
-"filetype off " supposed to be required, but seems to work without it; when I
-"turn it on vim always exists with status 1 BOO
+" from: https://github.com/gmarik/vundle
+"filetype off " supposed to be required, but seems to work without it; when I turn it on vim always exists with status 1 :(
 set rtp+=~/.vim/vundle/ 
 call vundle#rc()
 " vim bundles
+" let vundle manage itself
+Bundle 'gmarik/vundle'
+" libs
 Bundle 'surround.vim'
 Bundle 'vim-scripts/Align'
+Bundle 'LargeFile'
+Bundle 'FuzzyFinder'
+"plugins
+Bundle 'L9'
+Bundle 'cecutil'
+Bundle 'file-line'
 " /vim bundles
 " /vundle setup
 
