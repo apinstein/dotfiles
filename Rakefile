@@ -65,6 +65,18 @@ task :install do
   end
 end
 
+desc "VIM/Vundle"
+task :vimupdate do
+    puts "Updating vundle..."
+    sh "git submodule update"
+
+    puts "Installing/Updating vundles..."
+    sh "vim -c ':BundleInstall!' -c ':BundleClean' -c ':qa'"
+
+    puts "Done!"
+end
+
+
 def replace_file(file)
   system %Q{rm "$HOME/.#{file}"}
   link_file(file)
