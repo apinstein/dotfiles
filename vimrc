@@ -12,14 +12,15 @@ call vundle#rc()
 " let vundle manage itself
 Bundle 'gmarik/vundle'
 " libs
+Bundle 'L9'
+Bundle 'cecutil'
+"plugins
+Bundle 'file-line'
 Bundle 'surround.vim'
 Bundle 'vim-scripts/Align'
 Bundle 'LargeFile'
 Bundle 'FuzzyFinder'
-"plugins
-Bundle 'L9'
-Bundle 'cecutil'
-Bundle 'file-line'
+Bundle 'camelcasemotion'
 " Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
 " /vim bundles
 " /vundle setup
@@ -29,6 +30,11 @@ filetype plugin indent on
 
 " change the mapleader from \ to ,
 let mapleader=","
+
+" camel-case motions
+map <S-w> <Plug>CamelCaseMotion_w
+map <S-e> <Plug>CamelCaseMotion_e
+map <S-b> <Plug>CamelCaseMotion_b
 
 " mouse support
 if has("mouse")
