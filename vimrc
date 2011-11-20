@@ -8,6 +8,7 @@ set rtp+=~/.vim/vundle/
 call vundle#rc()
 " vim bundles
 Bundle 'surround.vim'
+Bundle 'vim-scripts/Align'
 " /vim bundles
 " /vundle setup
 
