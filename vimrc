@@ -14,14 +14,18 @@ if exists(":Bundle")
     " let vundle manage itself
     Bundle 'gmarik/vundle'
     " libs
-    Bundle 'L9'
+    if exists("str2float")
+        Bundle 'L9'
+    endif
     Bundle 'cecutil'
     "plugins
     Bundle 'file-line'
     Bundle 'surround.vim'
     Bundle 'vim-scripts/Align'
     Bundle 'LargeFile'
-    Bundle 'FuzzyFinder'
+    if exists("l9#getVersion")
+        Bundle 'FuzzyFinder'
+    endif
     Bundle 'camelcasemotion'
     Bundle 'taglist.vim'
     " Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
