@@ -6,24 +6,26 @@ filetype off
 " vundle setup
 " from: http://www.charlietanksley.net/philtex/sane-vim-plugin-management/
 " from: https://github.com/gmarik/vundle
-set rtp+=~/.vim/vundle/ 
-call vundle#rc()
-" vim bundles
-" let vundle manage itself
-Bundle 'gmarik/vundle'
-" libs
-Bundle 'L9'
-Bundle 'cecutil'
-"plugins
-Bundle 'file-line'
-Bundle 'surround.vim'
-Bundle 'vim-scripts/Align'
-Bundle 'LargeFile'
-Bundle 'FuzzyFinder'
-Bundle 'camelcasemotion'
-Bundle 'taglist.vim'
-" Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
-" /vim bundles
+if exists("vundle#rc")
+    set rtp+=~/.vim/vundle/
+    call vundle#rc()
+    " vim bundles
+    " let vundle manage itself
+    Bundle 'gmarik/vundle'
+    " libs
+    Bundle 'L9'
+    Bundle 'cecutil'
+    "plugins
+    Bundle 'file-line'
+    Bundle 'surround.vim'
+    Bundle 'vim-scripts/Align'
+    Bundle 'LargeFile'
+    Bundle 'FuzzyFinder'
+    Bundle 'camelcasemotion'
+    Bundle 'taglist.vim'
+    " Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
+    " /vim bundles
+endif
 " /vundle setup
 
 filetype plugin on
