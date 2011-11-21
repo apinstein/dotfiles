@@ -41,6 +41,7 @@ map <S-b> <Plug>CamelCaseMotion_b
 map + :TlistToggle<CR>
 
 " mouse support
+" http://www.reasonablyopinionated.com/2011/11/mouse-support-for-terminalapp-scrolling.html
 if has("mouse")
     set mouse=a
     set ttymouse=xterm2
