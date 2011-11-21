@@ -7,14 +7,17 @@ filetype off
 " from: http://www.charlietanksley.net/philtex/sane-vim-plugin-management/
 " from: https://github.com/gmarik/vundle
 set rtp+=~/.vim/vundle/
-call vundle#rc()
+try
+    call vundle#rc()
+catch
+endtry
 if exists(":Bundle")
     let $GIT_SSL_NO_VERIFY = 'true'
     " vim bundles
     " let vundle manage itself
     Bundle 'gmarik/vundle'
     " libs
-    if exists("str2float")
+    if v:version >= 702
         Bundle 'L9'
     endif
     Bundle 'cecutil'
@@ -23,7 +26,7 @@ if exists(":Bundle")
     Bundle 'surround.vim'
     Bundle 'vim-scripts/Align'
     Bundle 'LargeFile'
-    if exists("l9#getVersion")
+    if v:version >= 702 " requires L9, this allows FF to be installed on first pass
         Bundle 'FuzzyFinder'
     endif
     Bundle 'camelcasemotion'
