@@ -6,9 +6,10 @@ filetype off
 " vundle setup
 " from: http://www.charlietanksley.net/philtex/sane-vim-plugin-management/
 " from: https://github.com/gmarik/vundle
-if exists("vundle#rc")
-    set rtp+=~/.vim/vundle/
-    call vundle#rc()
+set rtp+=~/.vim/vundle/
+call vundle#rc()
+if exists(":Bundle")
+    let $GIT_SSL_NO_VERIFY = 'true'
     " vim bundles
     " let vundle manage itself
     Bundle 'gmarik/vundle'
