@@ -30,7 +30,9 @@ if exists(":Bundle")
         Bundle 'FuzzyFinder'
     endif
     Bundle 'camelcasemotion'
-    Bundle 'taglist.vim'
+    if exists(":ctags")
+        Bundle 'taglist.vim'
+    endif
     " Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
     " /vim bundles
 endif
