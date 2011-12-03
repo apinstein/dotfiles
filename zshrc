@@ -46,20 +46,18 @@ $(git_current_branch)\
 ]:\
 ${PR_LAST_EXIT}\
 > '
+
+    # BUGFIX for older zsh that overwrite the last line of command output if there is no trailing newline.
+    # See http://zsh.sourceforge.net/FAQ/zshfaq03.html, 3.23
+    # Skip defining precmd if the PROMPT_SP option is available.
+    if ! eval '[[ -o promptsp ]] 2>/dev/null'; then
+        # Output an inverse char and a bunch spaces.  We include
+        # a CR at the end so that any user-input that gets echoed
+        # between this output and the prompt doesn't cause a wrap.
+        print -nP "%B%S%#%s%b${(l:$((COLUMNS-1)):::):-}\r"
+    fi
 }
 RPROMPT=" $USERNAME@%M:%~"     # prompt for right side of screen
-
-# BUGFIX for older zsh that overwrite the last line of command output if there is no trailing newline.
-# See http://zsh.sourceforge.net/FAQ/zshfaq03.html, 3.23
-# Skip defining precmd if the PROMPT_SP option is available.
-if ! eval '[[ -o promptsp ]] 2>/dev/null'; then
-  function precmd {
-    # Output an inverse char and a bunch spaces.  We include
-    # a CR at the end so that any user-input that gets echoed
-    # between this output and the prompt doesn't cause a wrap.
-    print -nP "%B%S%#%s%b${(l:$((COLUMNS-1)):::):-}\r"
-  }
-fi
 
 HISTSIZE=1000
 SAVEHIST=1000
