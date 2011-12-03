@@ -25,7 +25,7 @@ autoload -U colors
 colors
 
 git_current_branch() {
-    ref=$(git-symbolic-ref HEAD 2> /dev/null) || return
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     echo " git@${ref#refs/heads/} "
 }
 
