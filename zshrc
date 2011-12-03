@@ -30,6 +30,7 @@ git_current_branch() {
 }
 
 function precmd { # runs before the prompt is rendered each time
+    # PROMPT
     local exitstatus=$? 
 
     # show screen window # if available
@@ -46,6 +47,7 @@ $(git_current_branch)\
 ]:\
 ${PR_LAST_EXIT}\
 > '
+    # /PROMPT
 
     # BUGFIX for older zsh that overwrite the last line of command output if there is no trailing newline.
     # See http://zsh.sourceforge.net/FAQ/zshfaq03.html, 3.23
@@ -62,6 +64,21 @@ RPROMPT=" $USERNAME@%M:%~"     # prompt for right side of screen
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.history
+
+HOSTTITLE=${(%):-%n@%m}
+TITLE=$HOSTTITLE
+function title (){
+    if (( ${#argv} == 0 )); then
+        TITLE=$HOSTTITLE
+    else
+        TITLE=$*
+    fi
+    # send title to gui terminal title bar
+    case $TERM in
+        xterm* | *rxvt | screen)
+            print -Pn "\e]0;$TITLE \a"
+    esac
+}
 
 # The following lines were added by compinstall
 
