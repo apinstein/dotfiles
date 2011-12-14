@@ -80,6 +80,10 @@ function title (){
     esac
 }
 
+# colorize all stderr red
+exec 2>>(while read line; do
+  print '\e[91m'${(q)line}'\e[0m' > /dev/tty; print -n $'\0'; done &)
+
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete
