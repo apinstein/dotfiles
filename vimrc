@@ -73,11 +73,17 @@ nmap <Leader>t :FufFileWithCurrentBufferDir<CR>
 nmap <Leader>f :FufTaggedFile<CR>
 nmap <Leader>b :FufBuffer<CR>
 
-" for moving between windows with ease:
+" for moving between split windows with ease:
 map <C-j> <C-w>j80<C-w>+ " up one window, maximized
 map <C-k> <C-w>k80<C-w>+ " down one window, maximized
 map <C-h> 80<C-w>+ " maximize current window
 map <C-i> <C-w>= " all windows equal height
+" for moving between tabs with ease:
+map 7 :tabnew<CR>
+" S-7
+map & :tabclose<CR>
+map 8 :tabprev<CR>
+map 9 :tabnext<CR>
 
 map <F6> :!osascript -e 'tell application "Safari"' -e 'set URL of document 0 to (get URL of document 0)' -e 'activate' -e 'end tell'<CR>
 nnoremap <silent> <F7> :Tlist<CR>  " Tlist plugin toggle
