@@ -33,6 +33,10 @@ if exists(":Bundle")
     if executable('ctags')
         Bundle 'taglist.vim'
     endif
+    " syntaxes
+    Bundle 'actionscript.vim--Leider'
+    Bundle 'git://github.com/tpope/vim-haml.git'
+    " ideas for future?
     " Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
     " /vim bundles
 endif
