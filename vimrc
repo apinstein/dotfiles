@@ -50,7 +50,7 @@ map <S-e> <Plug>CamelCaseMotion_e
 map <S-b> <Plug>CamelCaseMotion_b
 
 " taglist
-map + :TlistToggle<CR>
+nmap <Leader>a :TlistToggle<CR>
 
 if exists(":AlignCtrl")
     " auto-align: left justify (l), first sep only (:), 1 sp on either side of
@@ -74,9 +74,9 @@ nmap <Leader>f :FufTaggedFile<CR>
 nmap <Leader>b :FufBuffer<CR>
 
 " for moving between split windows with ease:
-map <C-j> <C-w>j80<C-w>+ " up one window, maximized
-map <C-k> <C-w>k80<C-w>+ " down one window, maximized
-map <C-h> 80<C-w>+ " maximize current window
+map <C-j> <C-w>j<C-w>80+ " up one window, maximized
+map <C-k> <C-w>k<C-w>80+ " down one window, maximized
+map <C-h> <C-w>80+ " maximize current window
 map <C-i> <C-w>= " all windows equal height
 " for moving between tabs with ease:
 map 7 :tabnew<CR>
