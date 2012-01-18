@@ -52,13 +52,15 @@ map <S-b> <Plug>CamelCaseMotion_b
 " taglist
 nmap <Leader>a :TlistToggle<CR>
 
-if exists(":AlignCtrl")
+" I don't understand vundle enough quite yet; even though Bundle 'Align' is above, exists(":AlignCtrl") never passed during .vimrc
+" So to hack around this for now I lazy-config Align otf.
+function! MyAlignConfig()
     " auto-align: left justify (l), first sep only (:), 1 sp on either side of
     " separator (p1P1), preserve leading whitespace so we don't break indenting (W)
     " works for = and =>
     AlignCtrl =l:p1P1W =>\?
-    vmap + = gv :Align<CR>
-endif
+endfunction
+vmap + :call MyAlignConfig()<CR>gv :Align<CR>
 
 " mouse support
 " http://www.reasonablyopinionated.com/2011/11/mouse-support-for-terminalapp-scrolling.html
