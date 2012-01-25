@@ -35,9 +35,7 @@ if [ $ssh_cmd = "ssh" ]; then
     echo "Consider installing autossh!"
 fi
 function ssh() {
-    last=${(P)#}
-    last=${@[$#]}
-    title $last
+    title "ssh $*"
     eval "$ssh_cmd -o Compression=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 $*"
     title
 }

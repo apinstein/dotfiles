@@ -55,6 +55,7 @@ map <S-b> <Plug>CamelCaseMotion_b
 
 " taglist
 nmap <Leader>a :TlistToggle<CR>
+nmap <C-\> :tselect<CR>
 
 " I don't understand vundle enough quite yet; even though Bundle 'Align' is above, exists(":AlignCtrl") never passed during .vimrc
 " So to hack around this for now I lazy-config Align otf.
