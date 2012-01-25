@@ -29,6 +29,19 @@ git_current_branch() {
     echo " git@${ref#refs/heads/} "
 }
 
+# prefer autossh for auto-reconnection after network disruptions
+ssh_cmd=`(which autossh 2>&1 > /dev/null) && echo "autossh -M 0" || echo ssh`
+if [ $ssh_cmd = "ssh" ]; then
+    echo "Consider installing autossh!"
+fi
+function ssh() {
+    last=${(P)#}
+    last=${@[$#]}
+    title $last
+    eval "$ssh_cmd -o Compression=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 $*"
+    title
+}
+
 function precmd { # runs before the prompt is rendered each time
     # PROMPT
     local exitstatus=$? 
