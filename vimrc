@@ -36,6 +36,7 @@ if exists(":Bundle")
     " syntaxes
     Bundle 'actionscript.vim--Leider'
     Bundle 'git://github.com/tpope/vim-haml.git'
+    Bundle 'git://github.com/motemen/git-vim.git'
     " ideas for future?
     " Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
     " /vim bundles
