@@ -322,3 +322,19 @@ function! RepeatTag(Forward)
   endif
 
 endfunction " RepeatTag()
+
+" override v in visual mode to cycle modes
+vmap v :call CycleVisualMode()<CR>
+let s:CycleVisualMode_running=0
+function! CycleVisualMode() range
+    let m = visualmode()
+    if m ==# 'v'
+        normal gvV
+    elseif m ==# 'V'
+        execute "normal gv\<C-v>"
+    elseif m != ''
+        vunmap v
+        normal gvv
+        vmap v :call CycleVisualMode()<CR>
+    endif
+endfunction
