@@ -69,6 +69,12 @@ imap [1;5C <C-O>e
 map [1;5D b
 imap [1;5D <C-O>b
 " map shift-option-arrows
+map [1;6A gh<C-P>
+vmap [1;6A <C-P>
+smap [1;6A <C-O><C-P>
+map [1;6B gh<C-M>
+vmap [1;6B <C-M>
+smap [1;6B <C-O><C-M>
 map [1;6C ghE
 vmap [1;6C e
 smap [1;6C <C-O>e
@@ -88,8 +94,10 @@ map [1;9D <Home>
 imap [1;9D <C-O><Home>
 " map shift-arrows
 map [1;2A gh<C-O><C-P>
+vmap [1;2A <C-P>
 smap [1;2A <C-O><C-P>
 map [1;2B gh<C-O><C-M>
+vmap [1;2B <C-M>
 smap [1;2B <C-O><C-M>
 " map shift-command-arrows
 map [1;10A gh<C-O>gg
