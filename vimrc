@@ -3,6 +3,49 @@ set nocp
 filetype on " on osx must turn on then off to prevent vim from always exiting with status code 1
 filetype off
 
+" vundle setup
+" from: http://www.charlietanksley.net/philtex/sane-vim-plugin-management/
+" from: https://github.com/gmarik/vundle
+set rtp+=~/.vim/vundle/
+try
+    call vundle#rc()
+catch
+endtry
+if exists(":Bundle")
+    let $GIT_SSL_NO_VERIFY = 'true'
+    " vim bundles
+    " let vundle manage itself
+    Bundle 'gmarik/vundle'
+    " libs
+    if v:version >= 702
+        Bundle 'L9'
+    endif
+    Bundle 'cecutil'
+    "plugins
+    Bundle 'file-line'
+    Bundle 'surround.vim'
+    Bundle 'vim-scripts/Align'
+    Bundle 'LargeFile'
+    if v:version >= 702 " requires L9, this allows FF to be installed on first pass
+        Bundle 'FuzzyFinder'
+    endif
+    Bundle 'camelcasemotion'
+    if executable('ctags')
+        Bundle 'taglist.vim'
+    endif
+    " syntaxes
+    Bundle 'actionscript.vim--Leider'
+    Bundle 'git://github.com/tpope/vim-haml.git'
+    Bundle 'git://github.com/motemen/git-vim.git'
+    " ideas for future?
+    " Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
+    " /vim bundles
+endif
+" /vundle setup
+
+filetype plugin on
+filetype plugin indent on
+
 " emulate mac arrow-based selection editing
 set keymodel=startsel
 set selectmode=key
@@ -57,49 +100,6 @@ map [1;10D gh<Home>
 smap [1;10D <C-O><Home>
 vmap [1;10D <Home>
 " end mac arrows
-
-" vundle setup
-" from: http://www.charlietanksley.net/philtex/sane-vim-plugin-management/
-" from: https://github.com/gmarik/vundle
-set rtp+=~/.vim/vundle/
-try
-    call vundle#rc()
-catch
-endtry
-if exists(":Bundle")
-    let $GIT_SSL_NO_VERIFY = 'true'
-    " vim bundles
-    " let vundle manage itself
-    Bundle 'gmarik/vundle'
-    " libs
-    if v:version >= 702
-        Bundle 'L9'
-    endif
-    Bundle 'cecutil'
-    "plugins
-    Bundle 'file-line'
-    Bundle 'surround.vim'
-    Bundle 'vim-scripts/Align'
-    Bundle 'LargeFile'
-    if v:version >= 702 " requires L9, this allows FF to be installed on first pass
-        Bundle 'FuzzyFinder'
-    endif
-    Bundle 'camelcasemotion'
-    if executable('ctags')
-        Bundle 'taglist.vim'
-    endif
-    " syntaxes
-    Bundle 'actionscript.vim--Leider'
-    Bundle 'git://github.com/tpope/vim-haml.git'
-    Bundle 'https://github.com/shawncplus/phpcomplete.vim'
-    " ideas for future?
-    " Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
-    " /vim bundles
-endif
-" /vundle setup
-
-filetype plugin on
-filetype plugin indent on
 
 " change the mapleader from \ to ,
 let mapleader=","
@@ -377,3 +377,19 @@ function! RepeatTag(Forward)
   endif
 
 endfunction " RepeatTag()
+
+" override v in visual mode to cycle modes
+vmap v :call CycleVisualMode()<CR>
+let s:CycleVisualMode_running=0
+function! CycleVisualMode() range
+    let m = visualmode()
+    if m ==# 'v'
+        normal gvV
+    elseif m ==# 'V'
+        execute "normal gv\<C-v>"
+    elseif m != ''
+        vunmap v
+        normal gvv
+        vmap v :call CycleVisualMode()<CR>
+    endif
+endfunction

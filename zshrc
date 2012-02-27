@@ -30,9 +30,10 @@ git_current_branch() {
 }
 
 # prefer autossh for auto-reconnection after network disruptions
-ssh_cmd=`(which autossh 2>&1 > /dev/null) && echo "autossh -M 0" || echo ssh`
+ssh_cmd=`(which autossh > /dev/null 2>&1) && echo "autossh -M 0" || echo ssh`
 if [ $ssh_cmd = "ssh" ]; then
     echo "Consider installing autossh!"
+    ssh_cmd=`which ssh`
 fi
 function ssh() {
     title "ssh $*"
