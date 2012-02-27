@@ -86,6 +86,11 @@ map [1;9C <End>
 imap [1;9C <C-O><End>
 map [1;9D <Home>
 imap [1;9D <C-O><Home>
+" map shift-arrows
+map [1;2A gh<C-O><C-P>
+smap [1;2A <C-O><C-P>
+map [1;2B gh<C-O><C-M>
+smap [1;2B <C-O><C-M>
 " map shift-command-arrows
 map [1;10A gh<C-O>gg
 smap [1;10A <C-O>gg
