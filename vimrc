@@ -140,6 +140,15 @@ vmap + :call MyAlignConfig()<CR>gv :Align<CR>
 if has("mouse")
     set mouse=a
     set ttymouse=xterm2
+    function! ToggleMouse()
+        let m = &mouse
+        if m ==# 'a'
+            execute ":set mouse="
+        else
+            execute ":set mouse=a"
+        endif
+    endfunction
+    map <Leader>m :call ToggleMouse()<CR>
 endif
 
 " http://www.vim.org/scripts/script.php?script_id=1984
