@@ -48,9 +48,9 @@ filetype plugin indent on
 
 " map arrow keys to move more sanely on wrapped lines
 map  <Up>   g<Up>
-imap <Up>   <C-O>g<Up>
+imap <expr> <Up>   pumvisible() ? "\<Up>" : "\<C-O>g<Up>"
 map  <Down> g<Down>
-imap <Down> <C-O>g<Down>
+imap <expr> <Down> pumvisible() ? "\<Down>" : "\<C-O>g<Down>"
 
 " emulate mac arrow-based selection editing
 set keymodel=startsel
