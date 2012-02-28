@@ -46,70 +46,69 @@ endif
 filetype plugin on
 filetype plugin indent on
 
+" map arrow keys to move more sanely on wrapped lines
+map  <Up>   g<Up>
+imap <Up>   <C-O>g<Up>
+map  <Down> g<Down>
+imap <Down> <C-O>g<Down>
+
 " emulate mac arrow-based selection editing
 set keymodel=startsel
 set selectmode=key
-" map arrow keys to move more sanely on wrapped lines
-map <Up> g<Up>
-imap <Up> <C-O>g<Up>
-map <Down> g<Down>
-imap <Down> <C-O>g<Down>
-" map option-arrows (this also magically maps shift-option arrows)
-" NOTE: you need to map your option-arrows to control-arrows in your terminal
-" In iTerm2 you need just to remap OPTION to CONTROL
-" In Terminal.app you need to enter in the escape sequences as shown below for option-arrows. Sadly shift-option arrows are not supported.
-map [1;5A <C-P>
-imap [1;5A <C-O><C-P>
-vmap [1;5A <C-P>
-map [1;5B <C-M>
-imap [1;5B <C-O><C-M>
-vmap [1;5B <C-M>
-map [1;5C e
-imap [1;5C <C-O>e
-map [1;5D b
-imap [1;5D <C-O>b
+" map arrows to exit current mode
+smap <Up> <Esc><Up>
+smap <Down> <Esc><Down>
+smap <Left> <Esc><Left>
+smap <Right> <Esc><Right>
+" map option-arrows
+map  [1;5A <C-Up>
+imap [1;5A <Esc><C-Up>
+vmap [1;5A <Esc><C-Up>
+smap [1;5A <Esc><C-Up>
+map  [1;5B <C-Down>
+imap [1;5B <Esc><C-Down>
+vmap [1;5B <Esc><C-Down>
+smap [1;5B <Esc><C-Down>
+map  [1;5C <C-Right>
+imap [1;5C <Esc><C-Right>
+vmap [1;5C <Esc><C-Right>
+smap [1;5C <Esc><C-Right>
+map  [1;5D <C-Left>
+imap [1;5D <Esc><C-Left>
+vmap [1;5D <Esc><C-Left>
+smap [1;5D <Esc><C-Left>
 " map shift-option-arrows
-map [1;6A gh<C-P>
-vmap [1;6A <C-P>
-smap [1;6A <C-O><C-P>
-map [1;6B gh<C-M>
-vmap [1;6B <C-M>
-smap [1;6B <C-O><C-M>
-map [1;6C ghE
-vmap [1;6C e
-smap [1;6C <C-O>e
-map [1;6D ghB
-vmap [1;6D b
-smap [1;6D <C-O>b
+map  [1;6A <C-S-Up>
+map  [1;6B <C-S-Down>
+map  [1;6C <C-S-Right>
+map  [1;6D <C-S-Left>
 " map command-arrows
 " NOTE: you need to map your option-arrows to control-arrows in your terminal
 " In iTerm2 & Terminal.app you must add the below escape sequences
-map [1;9A gg
+map  [1;9A gg
 imap [1;9A <C-O>gg
-map [1;9B G
+map  [1;9B G
 imap [1;9B <C-O>G
-map [1;9C <End>
+map  [1;9C <End>
 imap [1;9C <C-O><End>
-map [1;9D <Home>
+map  [1;9D <Home>
 imap [1;9D <C-O><Home>
 " map shift-arrows
-map [1;2A gh<C-O><C-P>
-vmap [1;2A <C-P>
-smap [1;2A <C-O><C-P>
-map [1;2B gh<C-O><C-M>
-vmap [1;2B <C-M>
-smap [1;2B <C-O><C-M>
+map [1;2A <S-Up>
+map [1;2B <S-Down>
+map [1;2C <S-Right>
+map [1;2D <S-Left>
 " map shift-command-arrows
-map [1;10A gh<C-O>gg
+map  [1;10A gh<C-O>gg
 smap [1;10A <C-O>gg
 vmap [1;10A gg
-map [1;10B gh<C-O>G
+map  [1;10B gh<C-O>G
 smap [1;10B <C-O>G
 vmap [1;10B G
-map [1;10C gh<End>
+map  [1;10C gh<End>
 smap [1;10C <C-O><End>
 vmap [1;10C <End>
-map [1;10D gh<Home>
+map  [1;10D gh<Home>
 smap [1;10D <C-O><Home>
 vmap [1;10D <Home>
 " end mac arrows
