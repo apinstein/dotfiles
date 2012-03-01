@@ -154,8 +154,11 @@ if has("mouse")
 endif
 
 " solarized colorscheme
-set background=dark
-colorscheme solarized
+try
+    set background=dark
+    colorscheme solarized
+catch
+endtry
 
 " http://www.vim.org/scripts/script.php?script_id=1984
 " (depends on) http://www.vim.org/scripts/script.php?script_id=3252
