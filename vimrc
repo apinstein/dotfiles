@@ -154,11 +154,13 @@ if has("mouse")
 endif
 
 " solarized colorscheme
-try
-    set background=dark
-    colorscheme solarized
-catch
-endtry
+if match(&term, '256') != -1
+    try
+        set background=dark
+        colorscheme solarized
+    catch
+    endtry
+end
 
 " http://www.vim.org/scripts/script.php?script_id=1984
 " (depends on) http://www.vim.org/scripts/script.php?script_id=3252
