@@ -269,42 +269,28 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0xf729-0x100000</key>
+		<key>0xf729-0x0</key>
 		<dict>
 			<key>Action</key>
 			<integer>5</integer>
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0xf72b-0x100000</key>
+		<key>0xf72b-0x0</key>
 		<dict>
 			<key>Action</key>
 			<integer>4</integer>
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0xf72c-0x100000</key>
+		<key>0xf72c-0x0</key>
 		<dict>
 			<key>Action</key>
 			<integer>9</integer>
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0xf72c-0x20000</key>
-		<dict>
-			<key>Action</key>
-			<integer>9</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0xf72d-0x100000</key>
-		<dict>
-			<key>Action</key>
-			<integer>8</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0xf72d-0x20000</key>
+		<key>0xf72d-0x0</key>
 		<dict>
 			<key>Action</key>
 			<integer>8</integer>
@@ -348,35 +334,20 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
+	<key>NSNavBrowserPreferedColumnContentWidth</key>
+	<real>186</real>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/dev/dotfiles/stuff</string>
+	<string>~/dev/sandbox/Propel/test</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
 	<string></string>
-	<key>NSTableView Columns KeyBingingTable</key>
-	<array>
-		<data>
-		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
-		hAErATCG
-		</data>
-		<string>198</string>
-		<data>
-		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
-		hAErATGG
-		</data>
-		<string>198</string>
-	</array>
-	<key>NSTableView Hidden Columns KeyBingingTable</key>
-	<array/>
-	<key>NSTableView Sort Ordering KeyBingingTable</key>
-	<array/>
+	<key>NSWindow Frame NSNavGotoPanel</key>
+	<string>719 849 432 134 0 0 1920 1178 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>277 328 924 485 0 0 1440 878 </string>
+	<string>631 329 924 485 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>41 31 1396 847 0 0 1440 878 </string>
-	<key>NSWindow Frame iTerm Window 1</key>
-	<string>183 68 570 451 0 0 1440 878 </string>
+	<string>5 336 1411 825 0 0 1920 1178 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -700,62 +671,6 @@
 					<key>Text</key>
 					<string>0x7f</string>
 				</dict>
-            <key>0xf700-0x300000</key>
-            <dict>
-                <key>Action</key>
-                <integer>10</integer>
-                <key>Text</key>
-                <string>[1;9A</string>
-            </dict>
-            <key>0xf700-0x320000</key>
-            <dict>
-                <key>Action</key>
-                <integer>10</integer>
-                <key>Text</key>
-                <string>[1;10A</string>
-            </dict>
-            <key>0xf701-0x300000</key>
-            <dict>
-                <key>Action</key>
-                <integer>10</integer>
-                <key>Text</key>
-                <string>[1;9B</string>
-            </dict>
-            <key>0xf701-0x320000</key>
-            <dict>
-                <key>Action</key>
-                <integer>10</integer>
-                <key>Text</key>
-                <string>[1;10B</string>
-            </dict>
-            <key>0xf702-0x300000</key>
-            <dict>
-                <key>Action</key>
-                <integer>10</integer>
-                <key>Text</key>
-                <string>[1;9D</string>
-            </dict>
-            <key>0xf702-0x320000</key>
-            <dict>
-                <key>Action</key>
-                <integer>10</integer>
-                <key>Text</key>
-                <string>[1;10D</string>
-            </dict>
-            <key>0xf703-0x300000</key>
-            <dict>
-                <key>Action</key>
-                <integer>10</integer>
-                <key>Text</key>
-                <string>[1;9C</string>
-            </dict>
-            <key>0xf703-0x320000</key>
-            <dict>
-                <key>Action</key>
-                <integer>10</integer>
-                <key>Text</key>
-                <string>[1;10C</string>
-            </dict>
 				<key>0xf700-0x220000</key>
 				<dict>
 					<key>Action</key>
@@ -790,6 +705,20 @@
 					<integer>10</integer>
 					<key>Text</key>
 					<string>[1;6A</string>
+				</dict>
+				<key>0xf700-0x300000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>[1;9A</string>
+				</dict>
+				<key>0xf700-0x320000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>[1;10A</string>
 				</dict>
 				<key>0xf701-0x220000</key>
 				<dict>
@@ -826,6 +755,20 @@
 					<key>Text</key>
 					<string>[1;6B</string>
 				</dict>
+				<key>0xf701-0x300000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>[1;9B</string>
+				</dict>
+				<key>0xf701-0x320000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>[1;10B</string>
+				</dict>
 				<key>0xf702-0x220000</key>
 				<dict>
 					<key>Action</key>
@@ -861,6 +804,20 @@
 					<key>Text</key>
 					<string>[1;6D</string>
 				</dict>
+				<key>0xf702-0x300000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>[1;9D</string>
+				</dict>
+				<key>0xf702-0x320000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>[1;10D</string>
+				</dict>
 				<key>0xf703-0x220000</key>
 				<dict>
 					<key>Action</key>
@@ -895,6 +852,20 @@
 					<integer>10</integer>
 					<key>Text</key>
 					<string>[1;6C</string>
+				</dict>
+				<key>0xf703-0x300000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>[1;9C</string>
+				</dict>
+				<key>0xf703-0x320000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>[1;10C</string>
 				</dict>
 				<key>0xf704-0x20000</key>
 				<dict>
@@ -1973,7 +1944,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/apinstein/dev/dotfiles/stuff</string>
+	<string>/Users/alanpinstein/dotfiles/stuff</string>
 	<key>PromptOnClose</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -1991,7 +1962,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2012-03-26T01:34:18Z</date>
+	<date>2012-03-30T04:24:28Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
