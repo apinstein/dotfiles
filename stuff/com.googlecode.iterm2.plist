@@ -17,7 +17,7 @@
 	<key>ClosingHotkeySwitchesSpaces</key>
 	<false/>
 	<key>CommandSelection</key>
-	<true/>
+	<false/>
 	<key>Control</key>
 	<integer>1</integer>
 	<key>CopyLastNewline</key>
@@ -1984,7 +1984,7 @@
 	<key>TmuxDashboardLimit</key>
 	<integer>10</integer>
 	<key>TripleClickSelectsFullWrappedLines</key>
-	<false/>
+	<true/>
 	<key>URLHandlersByGuid</key>
 	<dict/>
 	<key>UseBorder</key>
