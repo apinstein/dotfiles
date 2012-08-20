@@ -15,6 +15,7 @@ alias vi=vim
 alias vipager='vim -R -'
 alias pb='git planbox'
 alias rake='noglob rake'
+alias ramdisk='diskutil erasevolume HFS+ "ramdisk" `hdiutil attach -nomount ram://4194304`'
 
 # php helpers
 alias xdebug-on='export XDEBUG_CONFIG="remote_enable=1"'
