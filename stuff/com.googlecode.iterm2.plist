@@ -334,20 +334,33 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
-	<key>NSNavBrowserPreferedColumnContentWidth</key>
-	<real>186</real>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/dev/sandbox/Propel/test</string>
+	<string>~/dev/dotfiles/stuff</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
 	<string></string>
-	<key>NSWindow Frame NSNavGotoPanel</key>
-	<string>719 849 432 134 0 0 1920 1178 </string>
+	<key>NSTableView Columns KeyBingingTable</key>
+	<array>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
+		hAErATCG
+		</data>
+		<string>198</string>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
+		hAErATGG
+		</data>
+		<string>302</string>
+	</array>
+	<key>NSTableView Hidden Columns KeyBingingTable</key>
+	<array/>
+	<key>NSTableView Sort Ordering KeyBingingTable</key>
+	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>631 329 924 485 0 0 1920 1178 </string>
+	<string>516 214 924 485 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>5 336 1411 825 0 0 1920 1178 </string>
+	<string>8 24 1207 847 0 0 1440 878 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1944,7 +1957,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/alanpinstein/dotfiles/stuff</string>
+	<string>/Users/apinstein/dev/dotfiles/stuff</string>
 	<key>PromptOnClose</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -1962,7 +1975,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2012-03-30T04:24:28Z</date>
+	<date>2012-08-18T18:39:53Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>

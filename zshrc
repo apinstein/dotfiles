@@ -14,6 +14,7 @@ alias base64urldecode='tr "\-_" "+/" | base64 -d | more'
 alias vi=vim
 alias vipager='vim -R -'
 alias pb='git planbox'
+alias rake='noglob rake'
 
 # php helpers
 alias xdebug-on='export XDEBUG_CONFIG="remote_enable=1"'
