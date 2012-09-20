@@ -99,6 +99,13 @@ function title (){
 zstyle ':completion:*' completer _expand _complete
 zstyle ':completion:*' completions 1
 zstyle ':completion:*' glob 1
+zstyle -e ':completion::complete:s(cp|sh):*' hosts "reply=( \$( gawk '
+    /^#/ { next }
+    /^Host\>/ { \$1 = \"\"; print }
+    ARGIND > 1 && !FS_set { FS = \"[, ]\";  FS_set++; \$0 = \$0; }
+    FS_set { print \$1, \$2 }
+    ' ~/.ssh/config ~/.ssh/known_hosts )
+    )"
 zstyle :compinstall filename '~/.zshrc'
 zstyle :compinstall filename '~/.stuff/zsh/rake-completion.zsh'
 
