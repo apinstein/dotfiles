@@ -5,6 +5,9 @@ export EDITOR=vim
 # ftp
 export FTP_PASSIVE=1
 
+export TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
+export REPORTTIME=10
+
 # aliases
 alias l='ls -alh --color'
 alias lsd='ls -ld *(-/DN)'
