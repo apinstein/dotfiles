@@ -35,14 +35,18 @@ git_current_branch() {
 }
 
 # prefer autossh for auto-reconnection after network disruptions
-ssh_cmd=`(which autossh > /dev/null 2>&1) && echo "autossh -M 0" || echo ssh`
-if [ $ssh_cmd = "ssh" ]; then
-    echo "Consider installing autossh!"
-    ssh_cmd=`which ssh`
-fi
-function ssh() {
+ssh_cmd="${commands[autossh]:-/usr/bin/ssh}"
+[[ $ssh_cmd = *autossh ]] && ssh_cmd+=" -M 0" || ssh_cmd=`which ssh` && echo "Consider installing autossh!"
+ssh(){
+    # it seems that closing a terminal window when ssh is run from a function results in the
+    # ssh process not exiting properly (doesn't seem to get the HUP from the terminal), ends up orphaned to ppid 1
+    # screen doesn't like it when orpahned ssh sessions (no tty?) are still connected and it doesn't work
+    # this little guy makes sure to kill all orphaned ssh's so that our screen's don't all get hung
+    # I am hoping to figure this out properly with the zsh folks but for now this allows me to use ssh without crying
+    ps ax -o ppid,pid,command  | grep '^ *1 .*ssh' | awk '{ print $2; }' | xargs kill
+
     title "ssh $*"
-    eval "$ssh_cmd -o Compression=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 $*"
+    ${=ssh_cmd} -o Compression=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 $*
     title
 }
 
