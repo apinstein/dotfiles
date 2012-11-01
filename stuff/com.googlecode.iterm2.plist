@@ -334,6 +334,8 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
+	<key>NSFontPanelAttributes</key>
+	<string>1, 0</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/dev/dotfiles/stuff</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -358,9 +360,11 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>516 214 924 485 0 0 1440 878 </string>
+	<string>363 84 924 485 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>8 24 1207 847 0 0 1440 878 </string>
+	<string>0 26 1438 852 0 0 1440 878 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>44 53 1396 825 0 0 1440 878 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1026,20 +1030,20 @@
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.56363654136657715</real>
+				<real>0.14568014442920685</real>
 				<key>Green Component</key>
-				<real>0.56485837697982788</real>
+				<real>0.14568014442920685</real>
 				<key>Red Component</key>
-				<real>0.50599193572998047</real>
+				<real>0.13129198551177979</real>
 			</dict>
 			<key>Selection Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.19370138645172119</real>
+				<real>0.24307020008563995</real>
 				<key>Green Component</key>
-				<real>0.15575926005840302</real>
+				<real>0.68583989143371582</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.97483032941818237</real>
 			</dict>
 			<key>Semantic History</key>
 			<dict>
@@ -1975,7 +1979,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2012-08-18T18:39:53Z</date>
+	<date>2012-10-26T20:35:14Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
