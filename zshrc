@@ -62,7 +62,7 @@ function precmd { # runs before the prompt is rendered each time
     # Combined left and right prompt configuration.
     local smiley="%(?,%F{green}☺%f,%F{red}☹%f)"
 
-    [ $exitstatus -eq 0 ] && PR_LAST_EXIT="${smiley} " || PR_LAST_EXIT=" ${smiley} %{$fg_bold[red]%}%?%{$reset_color%}"
+    [ $exitstatus -eq 0 ] && PR_LAST_EXIT="${smiley} " || PR_LAST_EXIT="${smiley} %{$fg_bold[red]%}%?%{$reset_color%}"
 
     # put in here so length recalulation works well and prompts don't wrap
     PROMPT='[\
