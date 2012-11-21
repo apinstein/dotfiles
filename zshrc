@@ -29,6 +29,28 @@ setopt prompt_subst
 autoload -U colors
 colors
 
+# grep the current repo for the given string, skipping files/directories that trip up grep or are undesirable in the search list
+function repogrep() {
+    local DIR=`pwd`
+    local TARGET=.git
+    while [ ! -e $DIR/$TARGET -a $DIR != "/" ]; do
+        DIR=$(dirname $DIR)
+    done
+    test $DIR = "/" && echo "Couldn't find a repo from here..." && return 1
+
+    echo Searching from $DIR
+    find ${DIR}/ \
+        -type f                                     \
+        -not -path '*/.git/*'                       \
+        -not -path '*/tags'                         \
+        -not -path '*/*min.js'                      \
+        -not -path "*/externals/*"                  \
+        -not -path "*/wwwroot/www/db_images/*"      \
+        -not -path "*/wwwroot/www/coverage/*"       \
+        -print0                                     \
+        | xargs -0 grep $*
+}
+
 git_current_branch() {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     echo " git@${ref#refs/heads/} "
