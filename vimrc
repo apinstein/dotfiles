@@ -235,7 +235,6 @@ compiler php
 
 " autocompletion config
 " see http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
-set completeopt=longest,menuone
 " enter key autocomplete selected item
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " tab key autocomplete selected item
