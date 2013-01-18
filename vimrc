@@ -225,6 +225,7 @@ syntax on
 " add flash syntax support, from http://www.abdulqabiz.com/blog/archives/flash_and_actionscript/vim_actionscript_and.php
 au BufNewFile,BufRead *.as set filetype=actionscript syntax=actionscript
 au BufNewFile,BufRead *.php set filetype=php syntax=php
+au BufNewFile,BufRead *.json set filetype=javascript syntax=javascript
 
 " php options - eventually put these in an autocmd group or whatever to make them local to PHP files
 set keywordprg=~/.vim/php_lookup " map shift-k to lookup commands on PHP web site
@@ -318,12 +319,7 @@ endfunction " InsertCloseTag()
 " Map ; to run linter for file type
 function! DoLint()
   if &filetype == 'javascript'
-    " find the next non-closing tag (in the appropriate direction), note where
-    " it is (in mark j) in case this function gets called again, then yank it
-    " and paste a copy at the original cursor position, and store the final
-    " cursor position (in mark i) for use next time round:
-    execute ":!jsl -process % | head -20"
-
+    execute ":!jslint %"
   elseif &filetype == 'xml'
     execute ":!xmllint -format % | head -20"
   elseif &filetype == 'ruby' || &filetype == 'rb'
