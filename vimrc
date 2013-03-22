@@ -218,7 +218,7 @@ set showmatch   " Show matching brackets.
 set autowrite    " Automatically save before commands like :next and :make
 set fileformats=unix,mac,dos " accepted file formats
 set ignorecase smartcase
-set linebreak
+set nolinebreak " linebreak looks nice but makes copy/paste of long, wrapped lines totally broken
 
 " syntax coloring
 syntax on
