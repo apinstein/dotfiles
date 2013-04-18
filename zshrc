@@ -20,6 +20,17 @@ alias pb='git planbox'
 alias rake='noglob rake'
 alias ramdisk='diskutil erasevolume HFS+ "ramdisk" `hdiutil attach -nomount ram://4194304`'
 
+# suffix aliases
+alias -s php=vim
+alias -s tpl=vim
+alias -s rb=vim
+alias -s conf=vim
+alias -s log=vim
+alias -s png="open -a Preview"
+alias -s jpg="open -a Preview"
+alias -s gif="open -a Preview"
+alias -s pdf="open -a Preview"
+
 # php helpers
 alias xdebug-on='export XDEBUG_CONFIG="remote_enable=1"'
 alias xdebug-off='unset XDEBUG_CONFIG'
