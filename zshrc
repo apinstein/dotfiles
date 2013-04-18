@@ -47,6 +47,7 @@ function repogrep() {
         -not -path "*/externals/*"                  \
         -not -path "*/wwwroot/www/db_images/*"      \
         -not -path "*/wwwroot/www/coverage/*"       \
+        -not -path "*/shared/*"                     \
         -print0                                     \
         | xargs -0 grep $*
 }
