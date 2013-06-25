@@ -226,6 +226,7 @@ syntax on
 au BufNewFile,BufRead *.as set filetype=actionscript syntax=actionscript
 au BufNewFile,BufRead *.php set filetype=php syntax=php
 au BufNewFile,BufRead *.json set filetype=javascript syntax=javascript
+au BufNewFile,BufRead *.scss set filetype=css syntax=css
 
 " php options - eventually put these in an autocmd group or whatever to make them local to PHP files
 set keywordprg=~/.vim/php_lookup " map shift-k to lookup commands on PHP web site
