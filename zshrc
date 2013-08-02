@@ -1,6 +1,8 @@
 # line editing and default editor
-bindkey -v
 export EDITOR=vim
+bindkey -v
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
 
 # ftp
 export FTP_PASSIVE=1
@@ -165,3 +167,6 @@ fi
 
 # override with local settings
 source ~/.zshrc.local
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
