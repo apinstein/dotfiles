@@ -6,7 +6,7 @@ filetype off
 " vundle setup
 " from: http://www.charlietanksley.net/philtex/sane-vim-plugin-management/
 " from: https://github.com/gmarik/vundle
-set rtp+=~/.vim/vundle/
+set rtp+=~/.vim/bundle/vundle/
 try
     call vundle#rc()
 catch
