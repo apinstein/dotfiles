@@ -48,6 +48,9 @@ endif
 filetype plugin on
 filetype plugin indent on
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
 " map arrow keys to move more sanely on wrapped lines
 map  <Up>   g<Up>
 imap <expr> <Up>   pumvisible() ? "\<Up>" : "\<C-O>g<Up>"
