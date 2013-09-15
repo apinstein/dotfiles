@@ -1,0 +1,9 @@
+# local gitconfig--add personal stuff to this file, e.g. github credentials...
+#
+# [user]
+#   name = Your Name
+#   email = email@domain.com
+# [github]
+#   user = mygithubusername
+#   token = 12345678901234567890123456789012
+
