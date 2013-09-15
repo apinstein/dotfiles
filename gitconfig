@@ -1,0 +1,39 @@
+[include]
+  path = ~/.gitconfig.local
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+[alias]
+  st = status
+  ci = commit
+  co = checkout
+  br = branch
+  lg = log --graph --decorate --date=relative --abbrev-commit --pretty=format:'%Cred%h%Creset [%an]%C(yellow)%d%Creset %s %Cgreen(%ar)%Creset'
+  recent = reflog -20 --date=relative
+  pb = planbox
+[rerere]
+  enabled = true
+[merge]
+  summary = true
+  prompt = false
+  tool = opendiff
+[core]
+  excludesfile = ~/.gitignore
+  whitespace = trailing-space,space-before-tab,tab-in-indent
+  autocrlf = false
+  savecrlf = true
+  editor = "vi"
+  pager = tee
+[push]
+  default = current
+[branch]
+  autosetuprebase = always
+[diff]
+  prompt = false
+[mergetool]
+  prompt = false
+[gc]
+  pruneExpire = "1 week ago"
+
