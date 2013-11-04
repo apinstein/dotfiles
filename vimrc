@@ -37,6 +37,10 @@ if exists(":Bundle")
     Bundle 'actionscript.vim--Leider'
     Bundle 'git://github.com/tpope/vim-haml.git'
     Bundle 'git://github.com/motemen/git-vim.git'
+    " syntastic
+    let g:syntastic_javascript_checkers = [ "closurecompiler" ]
+    let g:syntastic_javascript_closure_compiler_path = "/usr/lib64/ruby/gems/1.9.1/gems/closure-compiler-1.1.10/lib/closure-compiler-20130411.jar"
+    Bundle 'scrooloose/syntastic'
     " ideas for future?
     " Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
     " NOTE: you should also use the solarized terminal theme for this to work correctly: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
