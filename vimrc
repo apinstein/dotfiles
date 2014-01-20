@@ -130,7 +130,7 @@ map <S-w> <Plug>CamelCaseMotion_w
 map <S-e> <Plug>CamelCaseMotion_e
 map <S-b> <Plug>CamelCaseMotion_b
 " fix :E and :Se which apparently get broken by above maps
-cmap E Explore
+"cmap E Explore
 "cmap Se Sexlpore
 
 " taglist
