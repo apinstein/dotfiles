@@ -79,7 +79,7 @@ task :vimupdate => :git_submodules do
     sh "git submodule update"
 
     puts "Installing/Updating vundles..."
-    sh "vim +BundleInstall! +BundleClean +qa"
+    sh "vim '+set nomore' +BundleInstall! +BundleClean +qa"
 
     puts "Done!"
 end
