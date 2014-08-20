@@ -35,7 +35,7 @@ if exists(":Bundle")
     endif
     " syntaxes
     Bundle 'actionscript.vim--Leider'
-    Bundle 'git://github.com/tpope/vim-haml.git'
+    Bundle 'git://github.com/editorconfig/editorconfig-vim.git'
     Bundle 'git://github.com/motemen/git-vim.git'
     " syntastic
     let g:syntastic_javascript_checkers = [ "closurecompiler" ]
