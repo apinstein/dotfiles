@@ -37,8 +37,9 @@ if exists(":Bundle")
     Bundle 'actionscript.vim--Leider'
     Bundle 'git://github.com/editorconfig/editorconfig-vim.git'
     Bundle 'git://github.com/motemen/git-vim.git'
+    Bundle 'kchmck/vim-coffee-script'
     " syntastic
-    let g:syntastic_javascript_checkers = [ "closurecompiler" ]
+    let g:syntastic_javascript_checkers = [ "" ]
     let g:syntastic_javascript_closure_compiler_path = "/usr/lib64/ruby/gems/1.9.1/gems/closure-compiler-1.1.10/lib/closure-compiler-20130411.jar"
     Bundle 'scrooloose/syntastic'
     " ideas for future?
