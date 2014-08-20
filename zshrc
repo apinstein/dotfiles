@@ -70,6 +70,10 @@ git_current_branch() {
     echo " git@${ref#refs/heads/} "
 }
 
+function flushdns() {
+    (uname -a | grep Darwin > /dev/null 2>&1) && (dscacheutil -flushcache;sudo killall -HUP mDNSResponder)
+}
+
 # prefer autossh for auto-reconnection after network disruptions
 ssh_cmd="${commands[autossh]:-/usr/bin/ssh}"
 [[ $ssh_cmd = *autossh ]] && ssh_cmd+=" -M 0" || (ssh_cmd=`which ssh` && echo "Consider installing autossh!")
