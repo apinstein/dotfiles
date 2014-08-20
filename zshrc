@@ -84,7 +84,7 @@ ssh(){
     # this little guy makes sure to kill all orphaned ssh's so that our screen's don't all get hung
     # I am hoping to figure this out properly with the zsh folks but for now this allows me to use ssh without crying
     orpahned_ssh=`ps ax -o ppid,pid,command  | grep '^ *1 .*ssh\>' | awk '{ print $2; }' | xargs echo`
-    [ -n "${orpahned_ssh}" ] && echo ${orpahned_ssh} | xargs kill -9 && echo "killing orphaned ssh processes"
+    [ -n "${orpahned_ssh}" ] && echo ${orpahned_ssh} | xargs kill -9 && echo "killing orphaned ssh processes: ${orpahned_ssh}"
 
     title "ssh $*"
     ${=ssh_cmd} -o Compression=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 $*
