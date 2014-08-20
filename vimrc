@@ -6,52 +6,60 @@ filetype off
 " vundle setup
 " from: http://www.charlietanksley.net/philtex/sane-vim-plugin-management/
 " from: https://github.com/gmarik/vundle
-set rtp+=~/.vim/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 try
-    call vundle#rc()
-catch
-endtry
-if exists(":Bundle")
+    " vundle recommended initialization: https://github.com/gmarik/Vundle.vim
+    filetype off
+    call vundle#begin()
+
     let $GIT_SSL_NO_VERIFY = 'true'
+
     " vim bundles
     " let vundle manage itself
-    Bundle 'gmarik/vundle'
+    Plugin 'gmarik/Vundle.vim'
+
     " libs
     if v:version >= 702
-        Bundle 'L9'
+        Plugin 'L9'
     endif
-    Bundle 'cecutil'
-    "plugins
-    Bundle 'file-line'
-    Bundle 'surround.vim'
-    Bundle 'vim-scripts/Align'
-    Bundle 'LargeFile'
+    Plugin 'cecutil'
+
+    " Plugins
+    Plugin 'file-line'
+    Plugin 'surround.vim'
+    Plugin 'vim-scripts/Align'
+    Plugin 'LargeFile'
     if v:version >= 702 " requires L9, this allows FF to be installed on first pass
-        Bundle 'FuzzyFinder'
+        Plugin 'FuzzyFinder'
     endif
-    Bundle 'camelcasemotion'
+    Plugin 'camelcasemotion'
     if executable('ctags')
-        Bundle 'taglist.vim'
+        Plugin 'taglist.vim'
     endif
     " syntaxes
-    Bundle 'actionscript.vim--Leider'
-    Bundle 'git://github.com/editorconfig/editorconfig-vim.git'
-    Bundle 'git://github.com/motemen/git-vim.git'
-    Bundle 'kchmck/vim-coffee-script'
+    Plugin 'actionscript.vim--Leider'
+    Plugin 'git://github.com/editorconfig/editorconfig-vim.git'
+    Plugin 'git://github.com/motemen/git-vim.git'
+    Plugin 'kchmck/vim-coffee-script'
     " syntastic
     let g:syntastic_javascript_checkers = [ "" ]
     let g:syntastic_javascript_closure_compiler_path = "/usr/lib64/ruby/gems/1.9.1/gems/closure-compiler-1.1.10/lib/closure-compiler-20130411.jar"
-    Bundle 'scrooloose/syntastic'
+    Plugin 'scrooloose/syntastic'
     " ideas for future?
-    " Bundle 'http://www.vim.org/scripts/download_script.php?src_id=16015'
+    " Plugin 'http://www.vim.org/scripts/download_script.php?src_id=16015'
     " NOTE: you should also use the solarized terminal theme for this to work correctly: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
-    Bundle 'https://github.com/altercation/vim-colors-solarized'
+    Plugin 'https://github.com/altercation/vim-colors-solarized'
     " /vim bundles
-endif
+    call vundle#end()
+catch a:exception
+    echo a
+    echo "Error with Vundle bootstrapping."
+finally
+    filetype plugin on
+    filetype plugin indent on
+endtry
 " /vundle setup
 
-filetype plugin on
-filetype plugin indent on
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -138,7 +146,7 @@ map <S-b> <Plug>CamelCaseMotion_b
 nmap <Leader>a :TlistToggle<CR>
 nmap <C-\> :tselect<CR>
 
-" I don't understand vundle enough quite yet; even though Bundle 'Align' is above, exists(":AlignCtrl") never passed during .vimrc
+" I don't understand vundle enough quite yet; even though Plugin 'Align' is above, exists(":AlignCtrl") never passed during .vimrc
 " So to hack around this for now I lazy-config Align otf.
 function! MyAlignConfig()
     " auto-align: left justify (l), first sep only (:), 1 sp on either side of
