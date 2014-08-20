@@ -1,9 +1,24 @@
 #!/bin/zsh
 func=$1
-pman=`which pman`
-if [ $? -eq 0 ]; then
+
+pman=/usr/bin/pman
+
+# try dash.app server first
+nc -zv localhost 1337
+worked=$?
+if [ $worked -eq 0 ]; then
+    echo "keys=php&query=${1}" | nc localhost 1337
+    worked=$?
+fi
+
+# if that doesn't work, try local pman
+if [ $worked -ne 0 ]; then
     # pear install doc.php.net/pman
     $pman $func
-else
+    worked=$?
+fi
+
+# if that doesn't work, try web site
+if [ $worked -ne 0 ]; then
     open -a Safari "http://www.php.net/${func}"
 fi
