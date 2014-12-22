@@ -83,7 +83,7 @@ ssh(){
     # screen doesn't like it when orpahned ssh sessions (no tty?) are still connected and it doesn't work
     # this little guy makes sure to kill all orphaned ssh's so that our screen's don't all get hung
     # I am hoping to figure this out properly with the zsh folks but for now this allows me to use ssh without crying
-    orpahned_ssh=`ps ax -o ppid,pid,command  | grep '^ *1 .*ssh\>' | awk '{ print $2; }' | xargs echo`
+    orpahned_ssh=`ps ax -o ppid,pid,command  | grep '^ *1 .*ssh\>' | grep -v ssh-agent | awk '{ print $2; }' | xargs echo`
     [ -n "${orpahned_ssh}" ] && echo ${orpahned_ssh} | xargs kill -9 && echo "killing orphaned ssh processes: ${orpahned_ssh}"
 
     title "ssh $*"
