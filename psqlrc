@@ -1,4 +1,5 @@
 \set PROMPT1 '%/@%M-> %x '
+\x auto
 
 -- allow local overrides
 \i ~/.psqlrc.local
