@@ -1,8 +1,16 @@
 # line editing and default editor
 export EDITOR=vim
 bindkey -v
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+
+if [[ `uname` == 'Linux' ]]
+then
+    bindkey '^[OA' up-line-or-search
+    bindkey '^[OB' down-line-or-search
+else
+    # Darwin, ...
+    bindkey '^[[A' up-line-or-search
+    bindkey '^[[B' down-line-or-search
+fi
 
 # ftp
 export FTP_PASSIVE=1
