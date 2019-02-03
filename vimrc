@@ -34,6 +34,7 @@ try
     endif
     Plugin 'camelcasemotion'
     Plugin 'keepcase.vim'
+    Plugin 'abolish.vim'
     if executable('ctags')
         Plugin 'taglist.vim'
     endif
@@ -50,7 +51,6 @@ try
     " Plugin 'http://www.vim.org/scripts/download_script.php?src_id=16015'
     " NOTE: you should also use the solarized terminal theme for this to work correctly: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
     Plugin 'https://github.com/altercation/vim-colors-solarized'
-    Plugin 'joonty/vdebug.git'
     " /vim bundles
     call vundle#end()
 catch a:exception
