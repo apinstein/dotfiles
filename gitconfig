@@ -1,19 +1,19 @@
 [include]
   path = ~/.gitconfig.local
 [color]
-  diff = auto
-  status = auto
-  branch = auto
+	diff = auto
+	status = auto
+	branch = auto
   interactive = auto
 [alias]
-  st = status
-  ci = commit
-  co = checkout
+	st = status
+	ci = commit
+	co = checkout
   br = branch
-  lg = log --graph --decorate --date=relative --abbrev-commit --pretty=format:'%Cred%h%Creset [%an]%C(yellow)%d%Creset %s %Cgreen(%ar)%Creset'
-  recent = reflog -20 --date=relative
+	lg = log --graph --decorate --date=relative --abbrev-commit --pretty=format:'%Cred%h%Creset [%an]%C(yellow)%d%Creset %s %Cgreen(%ar)%Creset'
+	recent = reflog -20 --date=relative
   pb = planbox
-  staging-tags = tag -l \"staging*\"
+	staging-tags = tag -l \"staging*\"
 [rerere]
   enabled = true
 [merge]
@@ -21,18 +21,21 @@
   prompt = false
   tool = opendiff
 [core]
-  excludesfile = ~/.gitignore
-  whitespace = trailing-space,space-before-tab,tab-in-indent
+	excludesfile = /Users/apinstein/.gitignore
+	whitespace = trailing-space,space-before-tab,tab-in-indent
   autocrlf = false
   savecrlf = true
-  pager = tee
+	pager = tee
 [push]
-  default = current
+	default = current
 [branch]
-  autosetuprebase = always
+	autosetuprebase = always
 [diff]
   prompt = false
 [mergetool]
   prompt = false
 [gc]
   pruneExpire = "1 week ago"
+[user]
+	name = Alan Pinstein
+	email = apinstein@mac.com
