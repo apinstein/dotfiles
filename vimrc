@@ -342,7 +342,7 @@ endfunction " InsertCloseTag()
 " Map ; to run linter for file type
 function! DoLint()
   if &filetype == 'javascript'
-    execute ":!jslint %"
+    execute ":!node -c %"
   elseif &filetype == 'xml'
     execute ":!xmllint -format % | head -20"
   elseif &filetype == 'ruby' || &filetype == 'rb'
