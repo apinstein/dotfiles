@@ -2,16 +2,6 @@
 export EDITOR=vim
 bindkey -v
 
-if [[ `uname` == 'Linux' ]]
-then
-    bindkey '^[OA' up-line-or-search
-    bindkey '^[OB' down-line-or-search
-else
-    # Darwin, ...
-    bindkey '^[[A' up-line-or-search
-    bindkey '^[[B' down-line-or-search
-fi
-
 # ftp
 export FTP_PASSIVE=1
 
@@ -134,13 +124,39 @@ ${PR_LAST_EXIT}\
 }
 RPROMPT=" $USERNAME@%M:%~"     # prompt for right side of screen
 
+##### HISTORY CONFIGURAION
 HISTSIZE=5000               # How many lines of history to keep in memory
 HISTFILE=~/.zsh_history     # Where to save history to disk
 SAVEHIST=5000               # Number of history entries to save to disk
 #HISTDUP=erase              # Erase duplicates in the history file
+# The next 3 configue cross-session history sharing and immediately write all commands to the shared history file
+# (rather than at session exit which risks losing useful history)
 setopt appendhistory        # Append history to the history file (no overwriting)
 setopt sharehistory         # Share history across terminals
 setopt incappendhistory     # Immediately append to the history file, not just when a term is killed
+
+# Now that we have shared hisory, we want it for "search" but not up-arrow/down-arrow, which should just be session-local history
+# From: https://superuser.com/questions/446594/separate-up-arrow-lookback-for-local-and-global-zsh-history
+bindkey "${key[Up]}" alans-up-prompt
+bindkey "^[[A" alans-up-prompt
+
+bindkey "${key[Down]}" alans-down-prompt
+bindkey "^[[B" alans-down-prompt
+
+alans-up-prompt() {
+    zle set-local-history 1
+    zle up-line-or-search
+    zle set-local-history 0
+}
+zle -N alans-up-prompt
+alans-down-prompt() {
+    zle set-local-history 1
+    zle down-line-or-search
+    zle set-local-history 0
+}
+zle -N alans-down-prompt
+##### END HISTORY CONFIGURATION
+
 
 HOSTTITLE=${(%):-%n@%m}
 TITLE=$HOSTTITLE
