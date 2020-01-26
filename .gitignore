@@ -1,0 +1,2 @@
+# This is the local .gitignore for my dotfiles repo; not the template `gitignore` used by this project.
+vim/.netrwhist
