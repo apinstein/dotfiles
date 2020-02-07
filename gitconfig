@@ -36,6 +36,3 @@
   prompt = false
 [gc]
   pruneExpire = "1 week ago"
-[user]
-	name = Alan Pinstein
-	email = apinstein@mac.com
