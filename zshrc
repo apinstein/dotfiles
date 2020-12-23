@@ -199,3 +199,5 @@ fi
 
 # override with local settings
 source ~/.zshrc.local
+
+## Anything below here was probably added automatically and should be moved to ~/.zshrc.local

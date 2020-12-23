@@ -36,3 +36,4 @@ else
     $SCREEN -S MainScreen
 fi
 
+## Anything below here was probably added automatically and should be moved to ~/.zshrc.local
