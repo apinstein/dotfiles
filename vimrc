@@ -22,7 +22,12 @@ try
     if v:version >= 702
         Plugin 'L9'
     endif
+    Plugin 'junegunn/fzf'
     Plugin 'cecutil'
+    Plugin 'git://github.com/tpope/vim-eunuch'
+
+    " special file types
+    Plugin 'chrisbra/csv.vim'
 
     " Plugins
     Plugin 'file-line'
@@ -53,7 +58,7 @@ try
     Plugin 'https://github.com/altercation/vim-colors-solarized'
     " /vim bundles
     call vundle#end()
-catch a:exception
+catch /a:exception/
     echo a
     echo "Error with Vundle bootstrapping."
 finally
@@ -343,6 +348,8 @@ endfunction " InsertCloseTag()
 function! DoLint()
   if &filetype == 'javascript'
     execute ":!node -c %"
+  elseif &filetype == 'json'
+    execute ":!/opt/local/bin/jsonlint-2.7 -f %"
   elseif &filetype == 'xml'
     execute ":!xmllint -format % | head -20"
   elseif &filetype == 'ruby' || &filetype == 'rb'
