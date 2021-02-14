@@ -32,8 +32,8 @@ alias -s gif="open -a Preview"
 alias -s pdf="open -a Preview"
 
 # php helpers
-alias xdebug-on='export XDEBUG_CONFIG="remote_enable=1"'
-alias xdebug-off='unset XDEBUG_CONFIG'
+alias xdebug-on='export XDEBUG_MODE="debug"'
+alias xdebug-off='unset XDEBUG_MODE'
 
 # Prompts: see http://aperiodic.net/phil/prompt/
 setopt prompt_subst
