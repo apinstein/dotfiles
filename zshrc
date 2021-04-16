@@ -34,6 +34,7 @@ alias -s pdf="open -a Preview"
 # php helpers
 alias xdebug-on='export XDEBUG_MODE="debug" XDEBUG_SESSION=1'
 alias xdebug-off='unset XDEBUG_MODE XDEBUG_SESSION'
+alias xdebug-profile='php -dxdebug.mode=profile -dxdebug.output_dir=`pwd` $*'
 
 # Prompts: see http://aperiodic.net/phil/prompt/
 setopt prompt_subst
