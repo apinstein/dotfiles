@@ -251,7 +251,7 @@ set nolinebreak " linebreak looks nice but makes copy/paste of long, wrapped lin
 syntax on
 " add flash syntax support, from http://www.abdulqabiz.com/blog/archives/flash_and_actionscript/vim_actionscript_and.php
 au BufNewFile,BufRead *.as set filetype=actionscript syntax=actionscript
-au BufNewFile,BufRead *.php set filetype=php syntax=php
+au BufNewFile,BufRead *.php set filetype=php syntax=php number
 au BufNewFile,BufRead *.json set filetype=javascript syntax=javascript
 au BufNewFile,BufRead *.scss set filetype=css syntax=css
 
@@ -355,7 +355,7 @@ function! DoLint()
   elseif &filetype == 'ruby' || &filetype == 'rb'
     execute ":!ruby -c % | head -20"
   elseif &filetype == 'php'
-    execute ":!/usr/bin/php -l % | head -20"
+    execute ":!php80 -l % | head -20"
   else
     echohl ErrorMsg
     echo 'No linter set up for filetype' &filetype
