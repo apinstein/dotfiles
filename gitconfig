@@ -36,3 +36,5 @@
   prompt = false
 [gc]
   pruneExpire = "1 week ago"
+[branch "master"]
+    mergeoptions = --no-ff
