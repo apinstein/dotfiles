@@ -38,3 +38,5 @@
   pruneExpire = "1 week ago"
 [branch "master"]
     mergeoptions = --no-ff
+[init]
+	defaultBranch = main

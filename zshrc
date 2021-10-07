@@ -16,6 +16,7 @@ alias bigdirs='du -Sh ./ | grep -v "^-1" | grep "^[0-9]\\+M"'
 alias base64urldecode='tr "\-_" "+/" | base64 -d | more'
 alias vi=vim
 alias vipager='vim -R -'
+alias vgit="vim -o `git status --porcelain | awk '{print $2}'`"
 alias pb='git planbox'
 alias rake='noglob rake'
 alias ramdisk='diskutil erasevolume HFS+ "ramdisk" `hdiutil attach -nomount ram://4194304`'
