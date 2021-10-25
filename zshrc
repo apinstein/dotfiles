@@ -16,7 +16,7 @@ alias bigdirs='du -Sh ./ | grep -v "^-1" | grep "^[0-9]\\+M"'
 alias base64urldecode='tr "\-_" "+/" | base64 -d | more'
 alias vi=vim
 alias vipager='vim -R -'
-alias vgit="vim -o `git status --porcelain | awk '{print $2}'`"
+alias vgit="git status --porcelain | awk '{print \$2}' | xargs -o vim -o"
 alias pb='git planbox'
 alias rake='noglob rake'
 alias ramdisk='diskutil erasevolume HFS+ "ramdisk" `hdiutil attach -nomount ram://4194304`'
@@ -36,6 +36,7 @@ alias -s pdf="open -a Preview"
 alias xdebug-on='export XDEBUG_MODE="debug" XDEBUG_SESSION=1'
 alias xdebug-off='unset XDEBUG_MODE XDEBUG_SESSION'
 alias xdebug-profile='php -dxdebug.mode=profile -dxdebug.output_dir=`pwd` $*'
+alias xdebug-php='php -dzend_extension=xdebug $*'
 
 # Prompts: see http://aperiodic.net/phil/prompt/
 setopt prompt_subst
