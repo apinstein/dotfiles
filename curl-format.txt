@@ -1,0 +1,20 @@
+REPORT FOR:\n
+       requested url:  %{url}\n
+\n
+HTTP DATA:\n
+           final url:  %{url_effective}\n
+       num_redirects:  %{num_redirects}\n
+       response_code:  %{response_code}\n
+           page_size:  %{size_download} bytes\n
+    response_headers:  \n%{header_json}\n
+\n
+PERFORMANCE DATA:\n
+     time_namelookup:  %{time_namelookup}s\n
+        time_connect:  %{time_connect}s\n
+     time_appconnect:  %{time_appconnect}s\n
+    time_pretransfer:  %{time_pretransfer}s\n
+       time_redirect:  %{time_redirect}s\n
+  time_starttransfer:  %{time_starttransfer}s\n
+                     ----------\n
+          time_total:  %{time_total}s\n
+

@@ -19,6 +19,8 @@ alias vipager='vim -R -'
 alias pb='git planbox'
 alias rake='noglob rake'
 alias ramdisk='diskutil erasevolume HFS+ "ramdisk" `hdiutil attach -nomount ram://4194304`'
+alias curltime="curl -w \"@$HOME/.curl-format.txt\" -o /dev/null -s "
+
 
 # suffix aliases
 alias -s php=vim
