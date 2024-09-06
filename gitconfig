@@ -2,10 +2,13 @@
   path = ~/.gitconfig.local
 [user]
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK2XmEaeGIpFRLl1AFGExACu1NxY5DAwrRLI8kKRcoER
+	name = Alan Pinstein
+	email = apinstein@mac.com
 [gpg]
   format = ssh
 [gpg "ssh"]
   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	allowedSignersFile = /Users/apinstein/.ssh/allowed_signers
 [commit]
   gpgsign = true
 [color]
@@ -35,7 +38,7 @@
   savecrlf = true
 	pager = tee
 [push]
-	default = simple
+	default = current
 	autoSetupRemote = true
 [branch]
 	autosetuprebase = always
