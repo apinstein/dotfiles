@@ -65,7 +65,7 @@ task :install do
   end
 
   Rake::Task["vimupdate"].execute
-  Rake::Task["sudo_local"].execute
+  Rake::Task["mac"].execute
 end
 
 desc "Install /etc/pam.d/sudo_local from repo template (enables Touch ID for sudo)"
@@ -93,6 +93,30 @@ task :sudo_local do
 
     echo "Touch ID sudo config installed at /etc/pam.d/sudo_local."
   SH
+end
+
+desc "Run macOS-specific things"
+task :mac do
+  unless RUBY_PLATFORM.include?("darwin")
+    puts "Skipping :mac task – not on macOS (RUBY_PLATFORM=#{RUBY_PLATFORM})"
+    next
+  end
+
+  Rake::Task["mac_configs"].execute
+  Rake::Task["sudo_local"].execute
+end
+
+desc "Run macOS-specific configuration scripts"
+task :mac_configs do
+  script = File.join(Dir.pwd, "mac.configs")
+
+  unless File.exist?(script)
+    puts "mac.configs not found, skipping macOS config."
+    next
+  end
+
+  puts "Running macOS config script..."
+  sh "bash #{script}"
 end
 
 desc "VIM/Vundle"
