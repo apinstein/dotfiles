@@ -24,7 +24,6 @@ try
     endif
     Plugin 'junegunn/fzf'
     Plugin 'cecutil'
-    Plugin 'git://github.com/tpope/vim-eunuch'
 
     " special file types
     Plugin 'chrisbra/csv.vim'
@@ -45,8 +44,8 @@ try
     endif
     " syntaxes
     Plugin 'actionscript.vim--Leider'
-    Plugin 'git://github.com/editorconfig/editorconfig-vim.git'
-    Plugin 'git://github.com/motemen/git-vim.git'
+    Plugin 'editorconfig/editorconfig-vim.git'
+    Plugin 'motemen/git-vim.git'
     Plugin 'kchmck/vim-coffee-script'
     " syntastic
     let g:syntastic_javascript_checkers = [ "" ]
