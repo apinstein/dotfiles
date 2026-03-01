@@ -53,8 +53,7 @@ try
     Plugin 'scrooloose/syntastic'
     " ideas for future?
     " Plugin 'http://www.vim.org/scripts/download_script.php?src_id=16015'
-    " NOTE: you should also use the solarized terminal theme for this to work correctly: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
-    Plugin 'https://github.com/altercation/vim-colors-solarized'
+    Plugin 'altercation/vim-colors-solarized'
     " /vim bundles
     call vundle#end()
 catch /a:exception/
@@ -177,15 +176,6 @@ if has("mouse")
     endfunction
     map <Leader>m :call ToggleMouse()<CR>
 endif
-
-" solarized colorscheme
-if match(&term, '256') != -1
-    try
-        set background=dark
-        colorscheme solarized
-    catch
-    endtry
-end
 
 " http://www.vim.org/scripts/script.php?script_id=1984
 " (depends on) http://www.vim.org/scripts/script.php?script_id=3252
@@ -449,3 +439,17 @@ function! CycleVisualMode() range
         vmap v :call CycleVisualMode()<CR>
     endif
 endfunction
+
+" --- Solarized / Truecolor ---
+if has('termguicolors')
+    set termguicolors
+endif
+
+set background=dark
+let g:solarized_termcolors = 256
+
+try
+    colorscheme solarized
+catch
+    colorscheme default
+endtry
