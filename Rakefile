@@ -65,6 +65,34 @@ task :install do
   end
 
   Rake::Task["vimupdate"].execute
+  Rake::Task["sudo_local"].execute
+end
+
+desc "Install /etc/pam.d/sudo_local from repo template (enables Touch ID for sudo)"
+task :sudo_local do
+  template = File.join(Dir.pwd, "sudo_local.pam")
+
+  unless File.exist?(template)
+    puts "sudo_local template not found at #{template}, skipping."
+    next
+  end
+
+  puts "Installing /etc/pam.d/sudo_local from #{template} (requires sudo)..."
+
+  sh <<~SH
+    set -e
+
+    # Backup existing sudo_local if present
+    if [ -f /etc/pam.d/sudo_local ]; then
+      echo "Backing up existing /etc/pam.d/sudo_local to /etc/pam.d/sudo_local.bak"
+      sudo cp /etc/pam.d/sudo_local /etc/pam.d/sudo_local.bak
+    fi
+
+    # Install our template with proper owner/perm
+    sudo install -m 444 -o root -g wheel "#{template}" /etc/pam.d/sudo_local
+
+    echo "Touch ID sudo config installed at /etc/pam.d/sudo_local."
+  SH
 end
 
 desc "VIM/Vundle"
