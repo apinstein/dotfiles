@@ -32,7 +32,7 @@
   prompt = false
   tool = opendiff
 [core]
-	excludesfile = /Users/apinstein/.gitignore
+	excludesfile = ~/.gitignore
 	whitespace = trailing-space,space-before-tab,tab-in-indent
   autocrlf = false
   savecrlf = true
