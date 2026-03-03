@@ -77,22 +77,6 @@ function flushdns() {
     (uname -a | grep Darwin > /dev/null 2>&1) && (dscacheutil -flushcache;sudo killall -HUP mDNSResponder)
 }
 
-# prefer autossh for auto-reconnection after network disruptions
-ssh_cmd="${commands[autossh]:-/usr/bin/ssh}"
-[[ $ssh_cmd = *autossh ]] && ssh_cmd+=" -M 0" || (ssh_cmd=`which ssh` && echo "Consider installing autossh!")
-ssh(){
-    # it seems that closing a terminal window when ssh is run from a function results in the
-    # ssh process not exiting properly (doesn't seem to get the HUP from the terminal), ends up orphaned to ppid 1
-    # screen doesn't like it when orpahned ssh sessions (no tty?) are still connected and it doesn't work
-    # this little guy makes sure to kill all orphaned ssh's so that our screen's don't all get hung
-    # I am hoping to figure this out properly with the zsh folks but for now this allows me to use ssh without crying
-    orpahned_ssh=`ps ax -o ppid,pid,command  | grep '^ *1 .*ssh\>' | grep -v ssh-agent | awk '{ print $2; }' | xargs echo`
-    [ -n "${orpahned_ssh}" ] && echo ${orpahned_ssh} | xargs kill -9 && echo "killing orphaned ssh processes: ${orpahned_ssh}"
-
-    title "ssh $*"
-    ${=ssh_cmd} -o Compression=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 $*
-    title
-}
 
 function precmd { # runs before the prompt is rendered each time
     # PROMPT
@@ -142,10 +126,12 @@ setopt incappendhistory     # Immediately append to the history file, not just w
 
 # Now that we have shared hisory, we want it for "search" but not up-arrow/down-arrow, which should just be session-local history
 # From: https://superuser.com/questions/446594/separate-up-arrow-lookback-for-local-and-global-zsh-history
-bindkey "${key[Up]}" alans-up-prompt
+# Note: zkbd's ${key[Up/Down]} would be equivalent but requires running `zkbd` to generate a terminal profile.
+# Using hardcoded xterm escape sequences instead since they work on all modern macOS terminals.
+#bindkey "${key[Up]}" alans-up-prompt
 bindkey "^[[A" alans-up-prompt
 
-bindkey "${key[Down]}" alans-down-prompt
+#bindkey "${key[Down]}" alans-down-prompt
 bindkey "^[[B" alans-down-prompt
 
 alans-up-prompt() {
